@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.streaks {
+  display: grid;
+  grid: auto-flow / 1fr 1fr 1fr;
+}
+
+.streak {
+  border: 1px solid black;
+  width: 300px;
+}
