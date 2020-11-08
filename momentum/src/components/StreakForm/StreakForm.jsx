@@ -1,29 +1,25 @@
 import React, { useState } from "react";
-import { Streak } from "../Streak/Streak";
-import ReactDOM from "react-dom";
 
-export const StreakForm = () => {
+export const StreakForm = ({ streaks }) => {
   const [title, setTitle] = useState("");
   const [motivation, setMotivation] = useState("");
 
-  const [streak, setStreak] = useState({
-    title: "",
-    motivation: "",
-    isActive: false,
-  });
-
-  const createNewStreak = () => {
-    ReactDOM.render(
-      <Streak title={title} motivation={motivation}></Streak>,
-      document.querySelector(".streaks")
-    );
+  const onNewStreak = (e) => {
+    e.preventDefault();
+    let newStreaks = [...streaks];
+    let newStreak = {
+      title: { title },
+      motivation: { motivation },
+    };
+    newStreaks.push(newStreak);
+    console.log(newStreaks);
   };
 
   return (
     <>
-      <form id="StreakForm" className="StreakForm">
-        <div className="StreakForm_section">
-          <label className="StreakForm_label">Name your streak:</label>
+      <form className="streak-form">
+        <div className="streak-form_section">
+          <label className="streak-form_label">Name your streak:</label>
           <input
             type="text"
             value={title}
@@ -33,8 +29,8 @@ export const StreakForm = () => {
           />
         </div>
 
-        <div className="StreakForm_section">
-          <label className="StreakForm_label">
+        <div className="streak-form_section">
+          <label className="streak-form_label">
             Why maintaining this streak is important to you?
           </label>
           <input
@@ -50,8 +46,7 @@ export const StreakForm = () => {
           <button
             value="Create"
             onClick={(e) => {
-              createNewStreak(e);
-              e.preventDefault();
+              onNewStreak(e);
             }}
           >
             Create

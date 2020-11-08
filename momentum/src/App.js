@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Streak } from "./components/Streak/Streak";
+import { StreaksList } from "./components/StreaksList/StreaksList";
 import { StreakForm } from "./components/StreakForm/StreakForm";
 
 function App() {
@@ -23,77 +23,11 @@ function App() {
     },
   ]);
 
-  const [title, setTitle] = useState("");
-  const [motivation, setMotivation] = useState("");
-
-  const createNewStreak = (e) => {
-    const newStreaks = [...streaks];
-    newStreaks.push({
-      title: `${title}`,
-      motivation: `${motivation}`,
-      isActive: false,
-    });
-    setStreaks(newStreaks);
-  };
-
   return (
     <div className="App">
       <React.StrictMode>
-        <div className="streaks">
-          {streaks.map((streak, i) => (
-            <Streak
-              id={i}
-              key={i}
-              title={streak.title}
-              motivation={streak.motivation}
-              status={streak.isActive}
-            />
-          ))}
-        </div>
-
-        <hr></hr>
-
-        <form id="StreakForm" className="StreakForm">
-          <div className="StreakForm_section">
-            <label className="StreakForm_label">Name your streak:</label>
-            <input
-              type="text"
-              name="title"
-              value={title}
-              placeholder="Ex: Stopped smoking"
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="StreakForm_section">
-            <label className="StreakForm_label">
-              Why maintaining this streak is important to you?
-            </label>
-            <input
-              type="text"
-              name="motivation"
-              value={motivation}
-              placeholder="Ex: Stopped smoking"
-              onChange={(e) => setMotivation(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="StreakForm_section">
-            <button
-              value="Create"
-              onClick={(e) => {
-                e.preventDefault();
-                createNewStreak(e);
-              }}
-            >
-              Create
-            </button>
-          </div>
-        </form>
-
-        <hr></hr>
+        <StreaksList streaks={streaks} />
+        <StreakForm streaks={streaks} />
       </React.StrictMode>
     </div>
   );
