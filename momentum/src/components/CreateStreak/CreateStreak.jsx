@@ -1,12 +1,10 @@
-import React, { useState, useContext } from "react";
-
-import { StreaksContext } from "../../context/streaks.context.js";
-import { createStreak } from "../../context/actions/streaks.actions";
+import React, { useState } from "react";
+import { useStreaks } from "../../context/StreaksProvider";
 
 import "./CreateStreak.css";
 
 export const CreateStreak = () => {
-  const { dispatch } = useContext(StreaksContext);
+  const { onCreateStreak } = useStreaks();
 
   const [newStreak, setNewStreak] = useState({
     title: "",
@@ -15,20 +13,16 @@ export const CreateStreak = () => {
     intervalUnit: "days",
   });
 
-  const { title, motivation, intervalNum, intervalUnit } = newStreak;
-
   const handleChange = (e) => {
-    const { name, value } = e.target;
-
     setNewStreak({
       ...newStreak,
-      [name]: value,
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createStreak(newStreak));
+    onCreateStreak(newStreak);
   };
 
   return (
@@ -36,12 +30,12 @@ export const CreateStreak = () => {
       <form onSubmit={handleSubmit} className="streak-form">
         <h3>Create New Streak</h3>
         <div className="streak-form_section">
-          <label className="streak-form_label">Name your streak:</label>
+          <label className="streak-form_label">Name your Streak:</label>
           <input
             name="title"
             type="text"
-            value={title}
-            placeholder="Ex: Stopped smoking"
+            value={newStreak.title}
+            placeholder="I have stopped smoking"
             onChange={(e) => handleChange(e)}
             required
           />
@@ -49,24 +43,24 @@ export const CreateStreak = () => {
 
         <div className="streak-form_section">
           <label className="streak-form_label">
-            Why maintaining this streak is important to you?
+            Why maintaining this Streak is important to you?
           </label>
           <input
             name="motivation"
             type="text"
-            value={motivation}
-            placeholder="Ex: So I can play soccer at the park with my kids"
+            value={newStreak.motivation}
+            placeholder="So I can play soccer at the park with my kids"
             onChange={(e) => handleChange(e)}
             required
           />
         </div>
 
         <div className="streak-form_section">
-          <label className="streak-form_label">Should be updated Every</label>
+          <label className="streak-form_label">Should be updated every</label>
           <input
             name="intervalNum"
             type="number"
-            value={intervalNum}
+            value={newStreak.intervalNum}
             onChange={(e) => handleChange(e)}
             required
           />
@@ -74,10 +68,10 @@ export const CreateStreak = () => {
 
         <div className="streak-form_section">
           <label className="streak-form_label">
-            Pick time interval
+            Select time interval
             <select
               name="intervalUnit"
-              value={intervalUnit}
+              value={newStreak.intervalUnit}
               onChange={handleChange}
             >
               <option value="seconds">Seconds</option>

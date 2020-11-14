@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { StreaksProvider } from "./context/streaks.context";
+import { StreaksProvider } from "./context/StreaksProvider";
+import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
