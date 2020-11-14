@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
+
+// Context:
+import { StreaksContext } from "../../context/streaks.context.js";
+
+// Components:
 import { Streak } from "../Streak/Streak";
 
-export const StreaksList = ({ streaks }) => (
-  <>
-    <div className="streaks">
-      {streaks.map((streak, i) => (
-        <Streak
-          key={i}
-          id={i}
-          title={streak.title}
-          motivation={streak.motivation}
-          status={streak.isActive}
-        />
-      ))}
-    </div>
-  </>
-);
+// Styles:
+import "./Streaks.css";
+
+export const StreaksList = () => {
+  const { streaks } = useContext(StreaksContext);
+  return (
+    <>
+      <div className="streaks">
+        {streaks.map((streak) => (
+          <Streak streak={streak} />
+        ))}
+      </div>
+    </>
+  );
+};

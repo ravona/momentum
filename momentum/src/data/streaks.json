@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Stop Smoking",
+    "motivation": "So I can play basketball with my kids",
+    "intervalNum": 1,
+    "intervalUnit": "days",
+    "count": 0,
+    "isActive": false
+  },
+  {
+    "title": "Jog every 2 days for a year",
+    "motivation": "I want to lose weight and be healthy",
+    "intervalNum": 2,
+    "intervalUnit": "days",
+    "count": 0,
+    "isActive": false
+  },
+  {
+    "title": "Learn 10 words in Spanish every 2 seconds",
+    "motivation": "I want to be able to speak with the locals during my upcoming trip to Mexico",
+    "intervalNum": 2,
+    "intervalUnit": "seconds",
+    "count": 0,
+    "isActive": false
+  }
+]

@@ -1,46 +1,45 @@
 import "./Streak.css";
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 import Countdown from "react-countdown";
 
-export const Streak = ({ id, name, motivation }) => {
-  let [StreakCount, setStreakCount] = useState(0);
+export const Streak = ({ streak }) => {
+  const [count, setCount] = useState(streak.count);
 
   const handleIncrement = () => {
-    // increment counter
-    setStreakCount(StreakCount + 1);
-
-    // start countdown
-    ReactDOM.render(
-      <Countdown onComplete={handleLoss} date={Date.now() + 2000} />,
-      document.querySelector(`.streak-${id} .streak-countdown`)
-    );
+    // 1. increment streak count
   };
 
   const handleLoss = () => {
-    // reset counter
-    setStreakCount((StreakCount = 0));
-
-    // remove countdown
-    ReactDOM.render(
-      null,
-      document.querySelector(`.streak-${id} .streak-countdown`)
-    );
+    // setIsActive(false);
+    setCount(0);
   };
 
   return (
     <>
-      <div className={`streak streak-${id}`}>
-        <span className="streak-icon streak-icon--close material-icons">
-          delete
-        </span>
-        <div className="streak-number">Streak #{id}</div>
-        <h3 className="streak-title">{name}</h3>
-        <p className="streak-motivation">{motivation}</p>
-        <div className="streak-countdown"></div>
-        <div className="streak-counter">{StreakCount}</div>
-        <button onClick={(e) => handleIncrement(id, e)} className="streak-btn">
+      <div key={streak.title} className={`streak`}>
+        <div>delete</div>
+        <h4 className={"streak-title"}>{streak.title}</h4>
+        <h5 className={"streak-motivation"}>{streak.motivation}</h5>
+        <div className="streak-countdown">
+          {/* 
+          1. will render Countdown componenet after a click on increment button
+          2. will reset Countdown after each click on increment button 
+          3. will unmount Countdown after Streak loss 
+          */}
+          <Countdown
+            key={streak.title}
+            date={Date.now() + 2000}
+            onComplete={handleLoss}
+          />
+        </div>
+
+        <div className="streak-counter"></div>
+        <button onClick={handleIncrement} className="streak-btn">
           Increment
+        </button>
+
+        <button onClick={handleLoss} className="streak-btn">
+          Simulate Streak loss
         </button>
       </div>
     </>

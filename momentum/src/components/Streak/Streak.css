@@ -1,3 +1,6 @@
 .streak {
-  border: 1px solid red;
+  text-align: center;
+  border: 1px dashed black;
+  padding: 1rem 3rem;
+  width: 20rem;
 }
