@@ -1,5 +1,6 @@
 [
   {
+    "id": "streak-1",
     "title": "Stop Smoking",
     "motivation": "So I can play basketball with my kids",
     "intervalNum": 1,
@@ -8,6 +9,7 @@
     "isActive": false
   },
   {
+    "id": "streak-2",
     "title": "Jog every 2 days for a year",
     "motivation": "I want to lose weight and be healthy",
     "intervalNum": 2,
@@ -16,6 +18,7 @@
     "isActive": false
   },
   {
+    "id": "streak-3",
     "title": "Learn 10 words in Spanish every 2 seconds",
     "motivation": "I want to be able to speak with the locals during my upcoming trip to Mexico",
     "intervalNum": 2,
