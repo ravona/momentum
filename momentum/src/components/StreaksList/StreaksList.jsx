@@ -11,11 +11,12 @@ import "./Streaks.css";
 
 export const StreaksList = () => {
   const { streaks } = useContext(StreaksContext);
+  if (!streaks.length) return <div>No Streaks Listed.</div>;
   return (
     <>
       <div className="streaks">
         {streaks.map((streak) => (
-          <Streak streak={streak} />
+          <Streak key={streak.id} streak={streak} />
         ))}
       </div>
     </>
