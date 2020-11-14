@@ -13,9 +13,10 @@ const streaksReducer = (state, action) => {
       return state;
 
     case CREATE_STREAK:
+      const updatedStreaks = [state, payload];
       return {
         ...state,
-        payload,
+        ...updatedStreaks,
       };
     case EDIT_STREAK:
       break;
