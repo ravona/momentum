@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import Countdown from "react-countdown";
-import { FaTrash, FaPenAlt } from "react-icons/fa";
 import { useStreaks } from "../../context/StreaksProvider";
 
 import "./Streak.css";
 
-export const Streak = ({ id, title, motivation, count, isActive }) => {
+export const Streak = ({
+  id,
+  title,
+  motivation,
+  intervalNum,
+  intervalUnit,
+}) => {
   const { removeStreak } = useStreaks();
 
   const handleSelect = () => {};
@@ -20,12 +25,7 @@ export const Streak = ({ id, title, motivation, count, isActive }) => {
     <>
       <div className={`streak`}>
         <div>
-          <button onClick={() => removeStreak(id)}>
-            <FaTrash />
-          </button>
-          <button>
-            <FaPenAlt onClick={() => editStreak(title)} />
-          </button>
+          <button onClick={() => removeStreak(id)}>Delete</button>
         </div>
         <h4 className={"streak-title"}>{title}</h4>
         <h5 className={"streak-motivation"}>{motivation}</h5>
