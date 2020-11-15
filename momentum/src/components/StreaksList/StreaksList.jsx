@@ -1,7 +1,4 @@
-import React, { useContext } from "react";
-
-// Context:
-import { StreaksContext } from "../../context/streaks.context.js";
+import React from "react";
 
 // Components:
 import { Streak } from "../Streak/Streak";
@@ -9,14 +6,18 @@ import { Streak } from "../Streak/Streak";
 // Styles:
 import "./Streaks.css";
 
-export const StreaksList = () => {
-  const { streaks } = useContext(StreaksContext);
-  if (!streaks.length) return <div>No Streaks Listed.</div>;
+export const StreaksList = ({ streaks }) => {
+  const deleteStreak = () => {};
   return (
     <>
       <div className="streaks">
         {streaks.map((streak) => (
-          <Streak key={streak.id} streak={streak} />
+          <Streak
+            onDeleteStreaks={deleteStreak}
+            streaks={streaks}
+            key={streak.id}
+            streak={streak}
+          />
         ))}
       </div>
     </>

@@ -4,20 +4,22 @@ import Countdown from "react-countdown";
 
 export const Streak = ({ streak }) => {
   const [count, setCount] = useState(streak.count);
+  const [isActive, setIsActive] = useState(streak.isActive);
 
   const handleIncrement = () => {
-    // 1. increment streak count
+    setIsActive(true);
+    setCount(count + 1);
   };
 
   const handleLoss = () => {
-    // setIsActive(false);
+    setIsActive(false);
     setCount(0);
   };
 
   return (
     <>
       <div key={streak.title} className={`streak`}>
-        <div>delete</div>
+        {/* <div onClick={onDeleteStreak(streak.id)}>delete</div> */}
         <h4 className={"streak-title"}>{streak.title}</h4>
         <h5 className={"streak-motivation"}>{streak.motivation}</h5>
         <div className="streak-countdown">
@@ -26,14 +28,11 @@ export const Streak = ({ streak }) => {
           2. will reset Countdown after each click on increment button 
           3. will unmount Countdown after Streak loss 
           */}
-          <Countdown
-            key={streak.title}
-            date={Date.now() + 2000}
-            onComplete={handleLoss}
-          />
+
+          <Countdown date={Date.now() + 2000} onComplete={handleLoss} />
         </div>
 
-        <div className="streak-counter"></div>
+        <div className="streak-counter">{count}</div>
         <button onClick={handleIncrement} className="streak-btn">
           Increment
         </button>

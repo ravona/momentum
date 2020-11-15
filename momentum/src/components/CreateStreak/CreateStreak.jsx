@@ -1,34 +1,18 @@
-import React, { useState, useContext } from "react";
-
-import { StreaksContext } from "../../context/streaks.context.js";
-import { createStreak } from "../../context/actions/streaks.actions";
+import React, { useState } from "react";
+import { nanoid } from "nanoid";
 
 import "./CreateStreak.css";
 
-export const CreateStreak = () => {
-  const { dispatch } = useContext(StreaksContext);
-
-  const [newStreak, setNewStreak] = useState({
-    title: "",
-    motivation: "",
-    intervalNum: 1,
-    intervalUnit: "days",
-  });
-
-  const { title, motivation, intervalNum, intervalUnit } = newStreak;
+export const CreateStreak = ({ onCreateStreak, streak }) => {
+  const { title, motivation, intervalNum, intervalUnit } = streak;
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setNewStreak({
-      ...newStreak,
-      [name]: value,
-    });
+    onCreateStreak({ ...streak, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createStreak(newStreak));
+    onCreateStreak(streak);
   };
 
   return (

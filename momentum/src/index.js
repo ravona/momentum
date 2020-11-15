@@ -3,13 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { StreaksProvider } from "./context/streaks.context";
 
 ReactDOM.render(
   <React.StrictMode>
-    <StreaksProvider>
-      <App />
-    </StreaksProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
