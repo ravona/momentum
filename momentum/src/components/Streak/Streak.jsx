@@ -1,44 +1,41 @@
-import "./Streak.css";
 import React, { useState } from "react";
 import Countdown from "react-countdown";
+import messages from "../../data/messages.json";
+import "./Streak.css";
 
 export const Streak = ({ streak }) => {
-  const [count, setCount] = useState(streak.count);
-  const [isActive, setIsActive] = useState(streak.isActive);
+  const [count, setCount] = useState(0);
+  const [status, setStatus] = useState(false);
+
+  // const onDeleteStreak = (id) => {
+  //   deleteStreak(id);
+  // };
 
   const handleIncrement = () => {
-    setIsActive(true);
+    setStatus(true);
     setCount(count + 1);
   };
 
   const handleLoss = () => {
-    setIsActive(false);
+    setStatus(false);
     setCount(0);
   };
 
   return (
     <>
-      <div key={streak.title} className={`streak`}>
-        {/* <div onClick={onDeleteStreak(streak.id)}>delete</div> */}
+      <div key={streak.id} className={`streak`}>
+        {/* <div onClick={onDeleteStreak}>delete</div> */}
         <h4 className={"streak-title"}>{streak.title}</h4>
         <h5 className={"streak-motivation"}>{streak.motivation}</h5>
         <div className="streak-countdown">
-          {/* 
-          1. will render Countdown componenet after a click on increment button
-          2. will reset Countdown after each click on increment button 
-          3. will unmount Countdown after Streak loss 
-          */}
-
-          <Countdown date={Date.now() + 2000} onComplete={handleLoss} />
+          {status === true ? (
+            <Countdown date={Date.now() + 2000} onComplete={handleLoss} />
+          ) : null}
         </div>
 
         <div className="streak-counter">{count}</div>
         <button onClick={handleIncrement} className="streak-btn">
           Increment
-        </button>
-
-        <button onClick={handleLoss} className="streak-btn">
-          Simulate Streak loss
         </button>
       </div>
     </>

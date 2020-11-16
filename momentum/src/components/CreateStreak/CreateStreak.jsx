@@ -3,22 +3,24 @@ import { nanoid } from "nanoid";
 
 import "./CreateStreak.css";
 
-export const CreateStreak = ({ onCreateStreak, streak }) => {
-  const { title, motivation, intervalNum, intervalUnit } = streak;
-
-  const handleChange = (e) => {
-    onCreateStreak({ ...streak, [e.target.name]: e.target.value });
-  };
+export const CreateStreak = ({ onCreateStreak }) => {
+  const [id] = useState(nanoid());
+  const [title, setTitle] = useState("");
+  const [motivation, setMotivation] = useState("");
+  const [intervalNum, setIntervalNum] = useState(1);
+  const [intervalUnit, setIntervalUnit] = useState("days");
 
   const handleSubmit = (e) => {
+    let newStreak = { id, title, motivation, intervalNum, intervalUnit };
     e.preventDefault();
-    onCreateStreak(streak);
+    onCreateStreak(newStreak);
   };
 
   return (
     <>
       <form onSubmit={handleSubmit} className="streak-form">
         <h3>Create New Streak</h3>
+
         <div className="streak-form_section">
           <label className="streak-form_label">Name your streak:</label>
           <input
@@ -26,7 +28,7 @@ export const CreateStreak = ({ onCreateStreak, streak }) => {
             type="text"
             value={title}
             placeholder="Ex: Stopped smoking"
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => setTitle(e.target.value)}
             required
           />
         </div>
@@ -40,7 +42,7 @@ export const CreateStreak = ({ onCreateStreak, streak }) => {
             type="text"
             value={motivation}
             placeholder="Ex: So I can play soccer at the park with my kids"
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => setMotivation(e.target.value)}
             required
           />
         </div>
@@ -51,7 +53,7 @@ export const CreateStreak = ({ onCreateStreak, streak }) => {
             name="intervalNum"
             type="number"
             value={intervalNum}
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => setIntervalNum(e.target.value)}
             required
           />
         </div>
@@ -62,7 +64,7 @@ export const CreateStreak = ({ onCreateStreak, streak }) => {
             <select
               name="intervalUnit"
               value={intervalUnit}
-              onChange={handleChange}
+              onChange={setIntervalUnit}
             >
               <option value="seconds">Seconds</option>
               <option value="minutes">Minutes</option>
