@@ -1,10 +1,12 @@
 import React from "react";
+
+// uses context:
 import { useStreaks } from "../../context/StreaksProvider";
 
-// Components:
+// components:
 import { Streak } from "../Streak/Streak";
 
-// Styles:
+// styles:
 import "./Streaks.css";
 
 export const StreaksList = () => {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useStreaks } from "../../context/StreaksProvider";
 
+// style:
 import "./CreateStreak.css";
 
 export const CreateStreak = () => {
@@ -10,7 +11,6 @@ export const CreateStreak = () => {
   const [intervalUnit, setIntervalUnit] = useState("days");
 
   const { addStreak } = useStreaks();
-
   const handleSubmit = (e) => {
     let newStreak = { title, motivation, intervalNum, intervalUnit };
     e.preventDefault();

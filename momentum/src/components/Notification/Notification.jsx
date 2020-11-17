@@ -1,6 +1,9 @@
 import React from "react";
+
+// context:
 import { useNotification } from "../../context/NotificationProvider";
 
+// style:
 import "./Notification.css";
 
 export const Notification = () => {

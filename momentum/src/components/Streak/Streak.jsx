@@ -1,12 +1,19 @@
 import React, { useState } from "react";
-import Countdown from "react-countdown";
+
+// data:
 import messages from "../../data/messages.json";
-import { useStreaks } from "../../context/StreaksProvider";
-import { useNotification } from "../../context/NotificationProvider";
+
+// components:
+import Countdown from "react-countdown";
+import { nanoid } from "nanoid";
 import { getRandomArrayItem } from "../../utils/utils";
 
+// context:
+import { useStreaks } from "../../context/StreaksProvider";
+import { useNotification } from "../../context/NotificationProvider";
+
+// style:
 import "./Streak.css";
-import { nanoid } from "nanoid";
 
 export const Streak = ({ id, title, motivation }) => {
   const { deleteStreak } = useStreaks();
@@ -38,7 +45,7 @@ export const Streak = ({ id, title, motivation }) => {
 
   return (
     <>
-      <div key={nanoid()} className={`streak`}>
+      <div key={id} className={`streak`}>
         <div onClick={handleDeleteStreak}>delete</div>
         <h4 className={"streak-title"}>{title}</h4>
         <h5 className={"streak-motivation"}>{motivation}</h5>
