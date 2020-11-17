@@ -11,6 +11,7 @@ import { StreaksProvider } from "./context/StreaksProvider";
 
 // style:
 import "./App.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (

@@ -1,6 +1,11 @@
 .streak {
-  text-align: center;
   border: 1px dashed black;
-  padding: 1rem 3rem;
-  width: 20rem;
+
+  &__content {
+    text-align: center;
+  }
+
+  &__icon {
+    cursor: pointer;
+  }
 }

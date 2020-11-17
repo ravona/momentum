@@ -6,7 +6,10 @@ import messages from "../../data/messages.json";
 // components:
 import Countdown from "react-countdown";
 import { getRandomArrayItem } from "../../utils/utils";
-import { IoMdTrash } from "react-icons/io/index";
+import { BsTrash } from "react-icons/bs";
+
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 // context:
 import { useStreaks } from "../../context/StreaksProvider";
@@ -45,21 +48,34 @@ export const Streak = ({ id, title, motivation }) => {
 
   return (
     <>
-      <div key={id} className={`streak`}>
-        <IoMdTrash className={"streak__icon"} onClick={handleDeleteStreak} />
-        <h4 className={"streak__title"}>{title}</h4>
-        <h5 className={"streak__motivation"}>{motivation}</h5>
-        <div className="streak__countdown">
-          {status === true ? (
-            <Countdown date={Date.now() + 2000} onComplete={handleLoss} />
-          ) : null}
-        </div>
+      <Card key={id} className={`streak`} style={{ width: "18rem" }}>
+        {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+        <Card.Header>
+          <BsTrash className={"streak__icon"} onClick={handleDeleteStreak} />
+        </Card.Header>
+        <Card.Body className={"streak__content"}>
+          <Card.Title className={"streak__title"}>{title}</Card.Title>
 
-        <div className="streak__counter">{count}</div>
-        <button onClick={handleIncrement} className="streak-btn">
-          Increment
-        </button>
-      </div>
+          <Card.Subtitle className={"streak__motivation"}>
+            {motivation}
+          </Card.Subtitle>
+
+          <div className="streak__countdown">
+            {status === true ? (
+              <Countdown date={Date.now() + 2000} onComplete={handleLoss} />
+            ) : null}
+          </div>
+
+          <Card.Text className="streak__counter">{count}</Card.Text>
+          <Button
+            onClick={handleIncrement}
+            className="streak-btn"
+            variant="primary"
+          >
+            Increment
+          </Button>
+        </Card.Body>
+      </Card>
     </>
   );
 };
