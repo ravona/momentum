@@ -4,6 +4,7 @@ import React from "react";
 import { StreaksList } from "./components/StreaksList/StreaksList";
 import { CreateStreak } from "./components/CreateStreak/CreateStreak";
 import { Notification } from "./components/Notification/Notification";
+// import { ToggleBtn } from "./components/ToggleBtn/ToggleBtn";
 
 // context:
 import { NotificationProvider } from "./context/NotificationProvider";
@@ -17,9 +18,9 @@ function App() {
   return (
     <div className="App">
       <NotificationProvider>
-        <Notification />
         <StreaksProvider>
           <CreateStreak />
+          <Notification />
           <StreaksList />
         </StreaksProvider>
       </NotificationProvider>

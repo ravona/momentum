@@ -5,7 +5,6 @@ const useNotification = () => useContext(NotificationContext);
 
 const NotificationProvider = ({ children }) => {
   const [notification, setNotification] = useState("Welcome!");
-
   const printNotification = (text) => setNotification(text);
 
   return (

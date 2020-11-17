@@ -10,7 +10,7 @@
   },
   {
     "id": "streak-2",
-    "title": "Jog every 2 days for a year",
+    "title": "Jog 5 Kilometers",
     "motivation": "I want to lose weight and be healthy",
     "intervalNum": 2,
     "intervalUnit": "days",
@@ -19,7 +19,7 @@
   },
   {
     "id": "streak-3",
-    "title": "Learn 10 words in Spanish every 2 seconds",
+    "title": "Learn 10 words in Spanish",
     "motivation": "I want to be able to speak with the locals during my upcoming trip to Mexico",
     "intervalNum": 2,
     "intervalUnit": "seconds",

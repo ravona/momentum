@@ -1,7 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Raleway:wght@300&display=swap");
 
 body {
   margin: 0;
   padding: 0;
-  font-family: "Oswald", sans-serif;
+}
+
+.App {
+  padding: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+@media (min-width: 960px) {
+  .App {
+    margin: 0 auto;
+    width: 1000px;
+  }
 }

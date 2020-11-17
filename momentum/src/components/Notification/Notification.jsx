@@ -3,6 +3,9 @@ import React from "react";
 // context:
 import { useNotification } from "../../context/NotificationProvider";
 
+// -- Bootstrap components:
+import Alert from "react-bootstrap/Alert";
+
 // style:
 import "./Notification.scss";
 
@@ -11,7 +14,9 @@ export const Notification = () => {
 
   return (
     <>
-      <h2 className="notification">{notification}</h2>
+      <Alert className="Notification" variant="primary">
+        {notification}
+      </Alert>
     </>
   );
 };

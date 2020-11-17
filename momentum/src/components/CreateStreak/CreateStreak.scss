@@ -1,7 +1,14 @@
-.streak-form {
-  text-align: center;
-  border: 1px dashed black;
-  padding: 1rem;
-  margin: 1rem;
-  background-color: rgba(0, 0, 0, 0.05);
+.CreateStreak {
+  margin: 1rem 0;
+
+  &__title {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1600px) {
+  .CreateStreak {
+    width: 50vw;
+    margin: 0 auto;
+  }
 }

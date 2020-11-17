@@ -1,11 +1,46 @@
-.streak {
-  border: 1px dashed black;
+.streak__title {
+}
 
-  &__content {
-    text-align: center;
+.streak__cta {
+  text-align: center;
+}
+
+.streak__icon {
+  cursor: pointer;
+}
+
+.streak__content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.streak__interval {
+  font-size: 0.8rem;
+}
+
+.streak__counter {
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+}
+
+.streak__countdown {
+  font-size: 1.618rem;
+  font-family: "Raleway", sans-serif;
+  padding: 1rem 0;
+}
+
+.streak__button {
+  .streak--active & {
+    background-color: orangered;
+    border-color: orangered;
   }
+}
 
-  &__icon {
-    cursor: pointer;
+@media (min-width: 480px) {
+  .streak {
+    width: 18rem;
   }
 }
