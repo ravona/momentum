@@ -5,8 +5,8 @@ import messages from "../../data/messages.json";
 
 // components:
 import Countdown from "react-countdown";
-import { nanoid } from "nanoid";
 import { getRandomArrayItem } from "../../utils/utils";
+import { IoMdTrash } from "react-icons/io/index";
 
 // context:
 import { useStreaks } from "../../context/StreaksProvider";
@@ -46,16 +46,16 @@ export const Streak = ({ id, title, motivation }) => {
   return (
     <>
       <div key={id} className={`streak`}>
-        <div onClick={handleDeleteStreak}>delete</div>
-        <h4 className={"streak-title"}>{title}</h4>
-        <h5 className={"streak-motivation"}>{motivation}</h5>
-        <div className="streak-countdown">
+        <IoMdTrash className={"streak__icon"} onClick={handleDeleteStreak} />
+        <h4 className={"streak__title"}>{title}</h4>
+        <h5 className={"streak__motivation"}>{motivation}</h5>
+        <div className="streak__countdown">
           {status === true ? (
             <Countdown date={Date.now() + 2000} onComplete={handleLoss} />
           ) : null}
         </div>
 
-        <div className="streak-counter">{count}</div>
+        <div className="streak__counter">{count}</div>
         <button onClick={handleIncrement} className="streak-btn">
           Increment
         </button>
