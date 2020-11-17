@@ -1,50 +1,56 @@
 import React, { useState } from "react";
 import Countdown from "react-countdown";
+import messages from "../../data/messages.json";
 import { useStreaks } from "../../context/StreaksProvider";
+import { useNotification } from "../../context/NotificationProvider";
+import { getRandomArrayItem } from "../../utils/utils";
 
 import "./Streak.css";
+import { nanoid } from "nanoid";
 
-export const Streak = ({
-  id,
-  title,
-  motivation,
-  intervalNum,
-  intervalUnit,
-}) => {
-  const { removeStreak } = useStreaks();
+export const Streak = ({ id, title, motivation }) => {
+  const { deleteStreak } = useStreaks();
+  const { printNotification } = useNotification();
 
-  const handleSelect = () => {};
+  const [count, setCount] = useState(0);
+  const [status, setStatus] = useState(false);
 
-  const editStreak = () => {};
+  const handleIncrement = () => {
+    setStatus(true);
+    setCount(count + 1);
 
-  const handleIncrement = () => {};
+    const getRandomSuccessMessage = getRandomArrayItem(messages.increment);
+    printNotification(getRandomSuccessMessage);
+  };
 
-  const handleLoss = () => {};
+  const handleLoss = () => {
+    setStatus(false);
+    setCount(0);
+
+    const getRandomLossMessage = getRandomArrayItem(messages.loss);
+    printNotification(getRandomLossMessage);
+  };
+
+  const handleDeleteStreak = (e) => {
+    e.preventDefault();
+    deleteStreak(id);
+  };
 
   return (
     <>
-      <div className={`streak`}>
-        <div>
-          <button onClick={() => removeStreak(id)}>Delete</button>
-        </div>
+      <div key={nanoid()} className={`streak`}>
+        <div onClick={handleDeleteStreak}>delete</div>
         <h4 className={"streak-title"}>{title}</h4>
         <h5 className={"streak-motivation"}>{motivation}</h5>
         <div className="streak-countdown">
-          {/* 
-          1. will render Countdown componenet after a click on increment button
-          2. will reset Countdown after each click on increment button 
-          3. will unmount Countdown after Streak loss 
-          */}
-          <Countdown date={Date.now() + 2000} onComplete={handleLoss} />
+          {status === true ? (
+            <Countdown date={Date.now() + 2000} onComplete={handleLoss} />
+          ) : null}
         </div>
 
-        <div className="streak-counter"></div>
+        <div className="streak-counter">{count}</div>
         <button onClick={handleIncrement} className="streak-btn">
           Increment
-        </button>
-
-        <button onClick={handleLoss} className="streak-btn">
-          Simulate Streak loss
         </button>
       </div>
     </>

@@ -1,6 +1,6 @@
+import { nanoid } from "nanoid";
 import React, { createContext, useState, useContext } from "react";
 import streaksData from "../data/streaks.json";
-import { nanoid } from "nanoid";
 
 const StreaksContext = createContext();
 const useStreaks = () => useContext(StreaksContext);
@@ -8,22 +8,22 @@ const useStreaks = () => useContext(StreaksContext);
 const StreaksProvider = ({ children }) => {
   const [streaks, setStreaks] = useState(streaksData);
 
-  const onCreateStreak = (streak) =>
+  const addStreak = (newStreak) =>
     setStreaks([
       ...streaks,
       {
         id: nanoid(),
         count: 0,
         isActive: false,
-        ...streak,
+        ...newStreak,
       },
     ]);
 
-  const removeStreak = (id) =>
+  const deleteStreak = (id) =>
     setStreaks(streaks.filter((streak) => streak.id !== id));
 
   return (
-    <StreaksContext.Provider value={{ streaks, onCreateStreak, removeStreak }}>
+    <StreaksContext.Provider value={{ streaks, addStreak, deleteStreak }}>
       {children}
     </StreaksContext.Provider>
   );

@@ -2,14 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { StreaksProvider } from "./context/StreaksProvider";
+
 import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <StreaksProvider>
-      <App />
-    </StreaksProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

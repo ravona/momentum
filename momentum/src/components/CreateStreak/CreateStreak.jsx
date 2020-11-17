@@ -4,39 +4,32 @@ import { useStreaks } from "../../context/StreaksProvider";
 import "./CreateStreak.css";
 
 export const CreateStreak = () => {
-  const { onCreateStreak } = useStreaks();
+  const [title, setTitle] = useState("");
+  const [motivation, setMotivation] = useState("");
+  const [intervalNum, setIntervalNum] = useState(1);
+  const [intervalUnit, setIntervalUnit] = useState("days");
 
-  const [newStreak, setNewStreak] = useState({
-    title: "",
-    motivation: "",
-    intervalNum: 1,
-    intervalUnit: "days",
-  });
-
-  const handleChange = (e) => {
-    setNewStreak({
-      ...newStreak,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const { addStreak } = useStreaks();
 
   const handleSubmit = (e) => {
+    let newStreak = { title, motivation, intervalNum, intervalUnit };
     e.preventDefault();
-    onCreateStreak(newStreak);
+    addStreak(newStreak);
   };
 
   return (
     <>
       <form onSubmit={handleSubmit} className="streak-form">
         <h3>Create New Streak</h3>
+
         <div className="streak-form_section">
           <label className="streak-form_label">Name your Streak:</label>
           <input
             name="title"
             type="text"
-            value={newStreak.title}
-            placeholder="I have stopped smoking"
-            onChange={(e) => handleChange(e)}
+            value={title}
+            placeholder="Ex: Stopped smoking"
+            onChange={(e) => setTitle(e.target.value)}
             required
           />
         </div>
@@ -48,9 +41,9 @@ export const CreateStreak = () => {
           <input
             name="motivation"
             type="text"
-            value={newStreak.motivation}
-            placeholder="So I can play soccer at the park with my kids"
-            onChange={(e) => handleChange(e)}
+            value={motivation}
+            placeholder="Ex: So I can play soccer at the park with my kids"
+            onChange={(e) => setMotivation(e.target.value)}
             required
           />
         </div>
@@ -60,8 +53,8 @@ export const CreateStreak = () => {
           <input
             name="intervalNum"
             type="number"
-            value={newStreak.intervalNum}
-            onChange={(e) => handleChange(e)}
+            value={intervalNum}
+            onChange={(e) => setIntervalNum(e.target.value)}
             required
           />
         </div>
@@ -71,8 +64,8 @@ export const CreateStreak = () => {
             Select time interval
             <select
               name="intervalUnit"
-              value={newStreak.intervalUnit}
-              onChange={handleChange}
+              value={intervalUnit}
+              onChange={setIntervalUnit}
             >
               <option value="seconds">Seconds</option>
               <option value="minutes">Minutes</option>
