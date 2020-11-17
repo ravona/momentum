@@ -10,7 +10,7 @@ import { NotificationProvider } from "./context/NotificationProvider";
 import { StreaksProvider } from "./context/StreaksProvider";
 
 // style:
-import "./App.css";
+import "./App.scss";
 
 function App() {
   return (

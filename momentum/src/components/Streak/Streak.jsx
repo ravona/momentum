@@ -13,7 +13,7 @@ import { useStreaks } from "../../context/StreaksProvider";
 import { useNotification } from "../../context/NotificationProvider";
 
 // style:
-import "./Streak.css";
+import "./Streak.scss";
 
 export const Streak = ({ id, title, motivation }) => {
   const { deleteStreak } = useStreaks();

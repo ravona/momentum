@@ -7,7 +7,7 @@ import { useStreaks } from "../../context/StreaksProvider";
 import { Streak } from "../Streak/Streak";
 
 // styles:
-import "./Streaks.css";
+import "./Streaks.scss";
 
 export const StreaksList = () => {
   const { streaks } = useStreaks();

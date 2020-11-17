@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useStreaks } from "../../context/StreaksProvider";
 
 // style:
-import "./CreateStreak.css";
+import "./CreateStreak.scss";
 
 export const CreateStreak = () => {
   const [title, setTitle] = useState("");
