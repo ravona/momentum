@@ -6,7 +6,7 @@ import messages from "../../data/messages.json";
 // components:
 import Countdown from "react-countdown";
 import { getRandomArrayItem } from "../../utils/utils";
-import { IoMdTrash } from "react-icons/io/index";
+import { BsTrash } from "react-icons/bs";
 
 // context:
 import { useStreaks } from "../../context/StreaksProvider";
@@ -45,20 +45,27 @@ export const Streak = ({ id, title, motivation }) => {
 
   return (
     <>
-      <div key={id} className={`streak`}>
-        <IoMdTrash className={"streak__icon"} onClick={handleDeleteStreak} />
-        <h4 className={"streak__title"}>{title}</h4>
-        <h5 className={"streak__motivation"}>{motivation}</h5>
-        <div className="streak__countdown">
-          {status === true ? (
-            <Countdown date={Date.now() + 2000} onComplete={handleLoss} />
-          ) : null}
+      <div key={id} className={"streak"}>
+        <div className={"streak__header"}>
+          <BsTrash className={"streak__icon"} onClick={handleDeleteStreak} />
         </div>
 
-        <div className="streak__counter">{count}</div>
-        <button onClick={handleIncrement} className="streak-btn">
-          Increment
-        </button>
+        <div className={"streak__body"}>
+          <h4 className={"streak__title"}>{title}</h4>
+          <h5 className={"streak__motivation"}>{motivation}</h5>
+          <div className="streak__countdown">
+            {status === true ? (
+              <Countdown date={Date.now() + 2000} onComplete={handleLoss} />
+            ) : null}
+          </div>
+          <div className="streak__counter">{count}</div>
+          <button
+            onClick={handleIncrement}
+            className="btn btn--primary btn--medium"
+          >
+            Increment
+          </button>
+        </div>
       </div>
     </>
   );

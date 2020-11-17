@@ -1,6 +1,21 @@
+@import "../../style/colors";
+
 .streak {
-  text-align: center;
-  border: 1px dashed black;
-  padding: 1rem 3rem;
-  width: 20rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: map-get($colors, "light");
+  width: 18rem;
+
+  &__title {
+    margin-bottom: 1rem;
+  }
+
+  &__body {
+    text-align: center;
+  }
+
+  &__icon {
+    cursor: pointer;
+  }
 }

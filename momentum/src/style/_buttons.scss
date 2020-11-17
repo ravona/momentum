@@ -1,0 +1,55 @@
+@import "./colors";
+
+.btn {
+  border: 0;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+  color: map-get($colors, "light");
+
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:disabled {
+    opacity: 0.2;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@each $key, $color in $colors {
+  .btn--#{$key} {
+    background-color: $color;
+
+    &:hover {
+      background-color: lighten($color, 5%);
+    }
+
+    &:active {
+      background-color: darken($color, 5%);
+    }
+  }
+}
+
+// button sizes:
+$btn-sizes: "tiny", "small", "medium", "large", "huge";
+
+@each $item in $btn-sizes {
+  $itemIndex: index($btn-sizes, $item);
+  .btn--#{$item} {
+    padding: 0.5rem 1rem;
+    font-size: $itemIndex * 0.333rem;
+  }
+}
+
+.btn--uppercase {
+  text-transform: uppercase;
+}
