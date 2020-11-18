@@ -1,6 +1,45 @@
+@import "../../style/_colors.scss";
+
 .streak {
   text-align: center;
-  border: 1px dashed black;
-  padding: 1rem 3rem;
-  width: 20rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  padding: 1rem 1.618rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 18rem;
+  height: 30rem;
+
+  &__header {
+    text-align: left;
+  }
+
+  &__title {
+    font-size: 1.618rem;
+  }
+
+  &__motivation {
+    font-size: 1rem;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+
+  &__countdown {
+    font-size: 1.618rem;
+  }
+
+  &__btn {
+    padding: 0.5rem 0.809rem;
+    background-color: map-get($colors, "Parrot");
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    box-shadow: 0px 2px 3px map-get($colors, "Parrot2");
+    font-family: "Fredoka One", cursive;
+  }
 }

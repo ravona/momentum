@@ -3,6 +3,8 @@ import Countdown from "react-countdown";
 import { getRandomArrayItem } from "../../utils/utils";
 import Notification from "../Notification/Notification";
 import messages from "../../data/messages.json";
+import { BsTrashFill } from "react-icons/bs";
+
 import "./Streak.scss";
 
 export const Streak = ({ streak, onDeleteStreak }) => {
@@ -50,7 +52,7 @@ export const Streak = ({ streak, onDeleteStreak }) => {
       <div key={id} className={`streak`}>
         <div className={"streak__header"}>
           <div className={"streak__icon"} onClick={handleDeleteStreak}>
-            delete
+            <BsTrashFill />
           </div>
         </div>
 
@@ -79,9 +81,11 @@ export const Streak = ({ streak, onDeleteStreak }) => {
           <div className="streak__counter">{count}</div>
         </div>
 
-        <button onClick={handleIncrement} className="streak__btn">
-          Increment
-        </button>
+        <div className="streak__footer">
+          <button onClick={handleIncrement} className="streak__btn">
+            Increment
+          </button>
+        </div>
       </div>
     </>
   );
