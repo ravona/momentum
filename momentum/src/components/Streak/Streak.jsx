@@ -3,7 +3,7 @@ import Countdown from "react-countdown";
 import { getRandomArrayItem } from "../../utils/utils";
 import Notification from "../Notification/Notification";
 import messages from "../../data/messages.json";
-import "./Streak.css";
+import "./Streak.scss";
 
 export const Streak = ({ streak, onDeleteStreak }) => {
   const { id, title, motivation, intervalNum, intervalUnit } = streak;

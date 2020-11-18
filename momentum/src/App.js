@@ -3,7 +3,7 @@ import data from "./data/streaks.json";
 import { StreaksList } from "./components/StreaksList/StreaksList";
 import { CreateStreak } from "./components/CreateStreak/CreateStreak";
 
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const [streaks, setStreaks] = useState(data);

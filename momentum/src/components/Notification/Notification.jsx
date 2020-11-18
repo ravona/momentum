@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Notification.css";
+import "./Notification.scss";
 
 const Notification = ({ text }) => {
   return (

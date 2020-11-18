@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 
-import "./CreateStreak.css";
+import "./CreateStreak.scss";
 
 export const CreateStreak = ({ onCreateStreak }) => {
   const [id] = useState(nanoid());

@@ -5,7 +5,7 @@ import React from "react";
 import { Streak } from "../Streak/Streak";
 
 // Styles:
-import "./Streaks.css";
+import "./Streaks.scss";
 
 export const StreaksList = ({ streaks, onDeleteStreak }) => {
   return (
