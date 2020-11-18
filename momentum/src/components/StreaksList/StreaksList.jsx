@@ -7,12 +7,16 @@ import { Streak } from "../Streak/Streak";
 // Styles:
 import "./Streaks.css";
 
-export const StreaksList = ({ streaks }) => {
+export const StreaksList = ({ streaks, onDeleteStreak }) => {
   return (
     <>
       <div className="streaks">
         {streaks.map((streak) => (
-          <Streak key={nanoid()} streak={streak} />
+          <Streak
+            onDeleteStreak={onDeleteStreak}
+            key={nanoid()}
+            streak={streak}
+          />
         ))}
       </div>
     </>

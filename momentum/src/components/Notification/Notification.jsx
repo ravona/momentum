@@ -5,7 +5,7 @@ import "./Notification.css";
 const Notification = ({ text }) => {
   return (
     <>
-      <h2 className="notification">{text}</h2>
+      <p className="notification">{text}</p>
     </>
   );
 };
