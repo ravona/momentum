@@ -1,0 +1,33 @@
+@import "./global";
+@import "./colors";
+
+.form {
+  @include momentum-border;
+  margin: map-get($spacings, "medium") 0;
+  padding: map-get($spacings, "medium");
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    margin: map-get($spacings, "small") 0;
+  }
+
+  &__label {
+    font-size: map-get($font_sizes, "medium");
+    text-align: left;
+    margin-bottom: map-get($spacings, "tiny");
+  }
+
+  &__input,
+  &__select {
+    display: block;
+    padding: 0.375rem 0.75rem;
+    font-size: map-get($font_sizes, "medium");
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+  }
+}

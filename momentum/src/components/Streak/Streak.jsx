@@ -3,7 +3,7 @@ import Countdown from "react-countdown";
 import { getRandomArrayItem } from "../../utils/utils";
 import Notification from "../Notification/Notification";
 import messages from "../../data/messages.json";
-import { BsTrashFill } from "react-icons/bs";
+import { FaTrash, FaShareAlt } from "react-icons/fa";
 
 import "./Streak.scss";
 
@@ -51,18 +51,27 @@ export const Streak = ({ streak, onDeleteStreak }) => {
     <>
       <div key={id} className={`streak`}>
         <div className={"streak__header"}>
-          <div className={"streak__icon"} onClick={handleDeleteStreak}>
-            <BsTrashFill />
+          <div className={"streak__icon"}>
+            <FaTrash onClick={handleDeleteStreak} />
+          </div>
+
+          <div className={"streak__icon"}>
+            <FaShareAlt />
           </div>
         </div>
 
         <div className={"streak__body"}>
-          <h4 className={"streak__title"}>{title}</h4>
-          <h5 className={"streak__motivation"}>{motivation}</h5>
+          <h3 className={"streak__title"}>{title}</h3>
+          <h4 className={"streak__motivation"}>{motivation}</h4>
+          <h5 className={"streak__interval"}>
+            Update every {intervalNum} {intervalUnit}
+          </h5>
 
           {isActive === true ? (
             <>
-              <Notification text={getRandomArrayItem(messages.increment)} />
+              <div className="streak__notification">
+                <Notification text={getRandomArrayItem(messages.increment)} />
+              </div>
               <div className="streak__countdown">
                 <Countdown
                   date={
@@ -75,14 +84,19 @@ export const Streak = ({ streak, onDeleteStreak }) => {
             </>
           ) : (
             <>
-              <Notification text={getRandomArrayItem(messages.loss)} />
+              <div className="streak__notification">
+                <Notification text={getRandomArrayItem(messages.loss)} />
+              </div>
             </>
           )}
           <div className="streak__counter">{count}</div>
         </div>
 
         <div className="streak__footer">
-          <button onClick={handleIncrement} className="streak__btn">
+          <button
+            onClick={handleIncrement}
+            className="btn btn--medium btn--success btn--light btn--uppercase"
+          >
             Increment
           </button>
         </div>

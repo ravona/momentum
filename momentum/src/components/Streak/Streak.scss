@@ -1,45 +1,66 @@
-@import "../../style/_colors.scss";
+@import "../../style/global";
+@import "../../style/colors";
 
 .streak {
+  @include momentum-border;
   text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
   padding: 1rem 1.618rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 18rem;
-  height: 30rem;
+  color: map-get($colors, "batman");
 
   &__header {
     text-align: left;
+    margin-bottom: map-get($spacings, "tiny");
+  }
+
+  &__icon {
+    cursor: pointer;
+    display: inline;
+    margin-right: map-get($spacings, "tiny");
+
+    &:hover {
+      color: map-get($colors, "ocean");
+    }
   }
 
   &__title {
-    font-size: 1.618rem;
+    font-size: map-get($font_sizes, "large");
+    margin-bottom: map-get($spacings, "small");
   }
 
   &__motivation {
-    font-size: 1rem;
+    font-size: map-get($font_sizes, "medium");
+    margin-bottom: map-get($spacings, "small");
+  }
+
+  &__interval {
+    font-size: map-get($font_sizes, "small");
+    margin-bottom: map-get($spacings, "small");
+  }
+
+  &__notification {
+    color: map-get($colors, "secondary");
+    margin-bottom: map-get($spacings, "small");
+    flex-grow: 1;
   }
 
   &__body {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     height: 100%;
+    flex-grow: 1;
   }
 
   &__countdown {
-    font-size: 1.618rem;
+    font-size: map-get($font_sizes, "large");
   }
 
-  &__btn {
-    padding: 0.5rem 0.809rem;
-    background-color: map-get($colors, "Parrot");
-    border-radius: 0.25rem;
-    text-transform: uppercase;
-    box-shadow: 0px 2px 3px map-get($colors, "Parrot2");
-    font-family: "Fredoka One", cursive;
+  &__counter {
+    font-size: map-get($font_sizes, "huge");
+    color: map-get($colors, "success");
   }
 }

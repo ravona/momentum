@@ -18,12 +18,12 @@ export const CreateStreak = ({ onCreateStreak }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="streak-form">
-        <h3>Create New Streak</h3>
-
-        <div className="streak-form_section">
-          <label className="streak-form_label">Name your streak:</label>
+      <form onSubmit={handleSubmit} className="form">
+        <h2>Create New Streak</h2>
+        <div className="form__section">
+          <label className="form__label">Name your streak:</label>
           <input
+            className="form__input"
             name="title"
             type="text"
             value={title}
@@ -33,11 +33,12 @@ export const CreateStreak = ({ onCreateStreak }) => {
           />
         </div>
 
-        <div className="streak-form_section">
-          <label className="streak-form_label">
+        <div className="form__section">
+          <label className="form__label">
             Why maintaining this streak is important to you?
           </label>
           <input
+            className="form__input"
             name="motivation"
             type="text"
             value={motivation}
@@ -47,9 +48,10 @@ export const CreateStreak = ({ onCreateStreak }) => {
           />
         </div>
 
-        <div className="streak-form_section">
-          <label className="streak-form_label">Should be updated Every</label>
+        <div className="form__section">
+          <label className="form__label">Should be updated Every</label>
           <input
+            className="form__input"
             name="intervalNum"
             type="number"
             value={intervalNum}
@@ -58,10 +60,11 @@ export const CreateStreak = ({ onCreateStreak }) => {
           />
         </div>
 
-        <div className="streak-form_section">
-          <label className="streak-form_label">
+        <div className="form__section">
+          <label className="form__label">
             Pick time interval
             <select
+              className="form__select"
               name="intervalUnit"
               value={intervalUnit}
               onChange={setIntervalUnit}
@@ -74,8 +77,12 @@ export const CreateStreak = ({ onCreateStreak }) => {
           </label>
         </div>
 
-        <div className="streak-form_section">
-          <button type="submit" value="Create">
+        <div className="form__section">
+          <button
+            className="btn btn--small btn--success btn--light"
+            type="submit"
+            value="Create"
+          >
             Create
           </button>
         </div>

@@ -1,12 +1,15 @@
+@import "../../style/global";
+
 .streaks {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
   justify-items: center;
+  margin: map-get($spacings, "small") 0;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 720px) {
   .streaks {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }

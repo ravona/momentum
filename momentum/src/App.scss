@@ -1,6 +1,16 @@
 @import "./style/reset";
+@import "./style/colors";
 @import "./style/fonts";
+@import "./style/buttons";
 
-body {
-  font-family: "Fredoka One", cursive;
+.CreateStreakWrapper {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+@media only screen and (min-width: 720px) {
+  .App {
+    width: 1200px;
+    margin: 0 auto;
+  }
 }
