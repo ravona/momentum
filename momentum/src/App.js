@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import data from "./data/streaks.json";
 import Toggle from "./components/Toggle/Toggle";
+import Notification from "./components/Notification/Notification";
 import { StreaksList } from "./components/StreaksList/StreaksList";
 import { CreateStreak } from "./components/CreateStreak/CreateStreak";
 

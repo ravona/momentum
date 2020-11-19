@@ -1,5 +1,5 @@
-import { nanoid } from "nanoid";
 import React from "react";
+import { nanoid } from "nanoid";
 
 // Components:
 import { Streak } from "../Streak/Streak";

@@ -11,8 +11,8 @@ export const CreateStreak = ({ onCreateStreak }) => {
   const [intervalUnit, setIntervalUnit] = useState("days");
 
   const handleSubmit = (e) => {
-    let newStreak = { id, title, motivation, intervalNum, intervalUnit };
     e.preventDefault();
+    const newStreak = { id, title, motivation, intervalNum, intervalUnit };
     onCreateStreak(newStreak);
   };
 
@@ -79,7 +79,7 @@ export const CreateStreak = ({ onCreateStreak }) => {
 
         <div className="form__section">
           <button
-            className="btn btn--small btn--success btn--light"
+            className="btn btn--small btn--success btn--light btn--uppercase"
             type="submit"
             value="Create"
           >

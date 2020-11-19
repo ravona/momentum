@@ -20,6 +20,7 @@
 @each $key, $color in $colors {
   .btn--#{$key} {
     background-color: $color;
+    box-shadow: 0 3px 0 0px darken($color, 20%);
 
     &:hover {
       background-color: lighten($color, 5%);
