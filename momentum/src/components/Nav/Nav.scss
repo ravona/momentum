@@ -1,0 +1,12 @@
+@import "../../style/global";
+
+.navigation {
+  &__items {
+    font-size: map-get($font_sizes, "large");
+    text-align: center;
+  }
+
+  &__item {
+    color: map-get($colors, "ocean");
+  }
+}

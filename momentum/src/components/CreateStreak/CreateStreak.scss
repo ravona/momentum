@@ -1,1 +1,11 @@
 @import "../../style/forms";
+
+.CreateStreak {
+  text-align: center;
+  padding: 1rem 0;
+
+  @media only screen and (min-width: 720px) {
+    width: 25vw;
+    margin: 0 auto;
+  }
+}

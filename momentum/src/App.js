@@ -1,32 +1,15 @@
-import React, { useState, useEffect } from "react";
-import data from "./data/streaks.json";
-import Toggle from "./components/Toggle/Toggle";
-import Notification from "./components/Notification/Notification";
-import { StreaksList } from "./components/StreaksList/StreaksList";
-import { CreateStreak } from "./components/CreateStreak/CreateStreak";
+import React from "react";
 
+// components:
+import { Nav } from "./components/Nav/Nav";
+
+// style:
 import "./App.scss";
 
 function App() {
-  const [streaks, setStreaks] = useState(data);
-
-  const deleteStreak = (id) => {
-    setStreaks(streaks.filter((streak) => streak.id !== id));
-  };
-
-  const addStreak = (newStreak) => {
-    setStreaks([...streaks, newStreak]);
-  };
-
   return (
     <div className="App">
-      <div className="CreateStreakWrapper">
-        <Toggle text="Create New Streak">
-          <CreateStreak onCreateStreak={addStreak} />
-        </Toggle>
-      </div>
-
-      <StreaksList onDeleteStreak={deleteStreak} streaks={streaks} />
+      <Nav />
     </div>
   );
 }

@@ -3,14 +3,15 @@
 @import "./style/fonts";
 @import "./style/buttons";
 
-.CreateStreakWrapper {
-  text-align: center;
-  padding: 1rem 0;
+.App {
+  font-family: "Fredoka One", cursive;
+}
 
-  @media only screen and (min-width: 720px) {
-    width: 25vw;
-    margin: 0 auto;
-  }
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media only screen and (min-width: 720px) {

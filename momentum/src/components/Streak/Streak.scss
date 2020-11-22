@@ -3,6 +3,7 @@
 
 .streak {
   @include momentum-border;
+  @include momentum-bevel;
   text-align: center;
   padding: 1rem 1.618rem;
   display: flex;
@@ -37,8 +38,9 @@
   }
 
   &__interval {
-    font-size: map-get($font_sizes, "small");
+    font-size: map-get($font_sizes, "medium");
     margin-bottom: map-get($spacings, "small");
+    color: map-get($colors, "success");
   }
 
   &__notification {

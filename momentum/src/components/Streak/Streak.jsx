@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import Countdown from "react-countdown";
+
+// data:
+import messages from "../../data/messages.json";
+
+// components:
 import { getRandomArrayItem } from "../../utils/utils";
 import Notification from "../Notification/Notification";
-import messages from "../../data/messages.json";
 import { FaTrash, FaShareAlt } from "react-icons/fa";
 
+// style:
 import "./Streak.scss";
 
 export const Streak = ({ streak, onDeleteStreak }) => {
@@ -49,7 +54,7 @@ export const Streak = ({ streak, onDeleteStreak }) => {
 
   return (
     <>
-      <div key={id} className={`streak`}>
+      <div key={id} className={`streak streak-${id}`}>
         <div className={"streak__header"}>
           <div className={"streak__icon"}>
             <FaTrash onClick={handleDeleteStreak} />

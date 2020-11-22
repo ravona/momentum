@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 
+// style:
 import "./CreateStreak.scss";
 
-export const CreateStreak = ({ onCreateStreak }) => {
-  const [id] = useState(nanoid());
+const CreateStreak = ({ onCreateStreak }) => {
+  const [id] = useState(nanoid(10));
   const [title, setTitle] = useState("");
   const [motivation, setMotivation] = useState("");
   const [intervalNum, setIntervalNum] = useState(1);
@@ -90,3 +91,5 @@ export const CreateStreak = ({ onCreateStreak }) => {
     </>
   );
 };
+
+export default CreateStreak;
