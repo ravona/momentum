@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { nanoid } from "nanoid";
 
 // components:
 import { Streak } from "../Streak/Streak";
@@ -6,15 +7,16 @@ import { Streak } from "../Streak/Streak";
 // style:
 import "./Streaks.scss";
 
-const StreaksList = ({ streaks, onDeleteStreak }) => {
+const StreaksList = (props) => {
   return (
     <>
       <div className="streaks">
-        {streaks.map((streak) => (
+        {props.streaks.map((streak, index) => (
           <Streak
-            key={streak.id}
-            onDeleteStreak={onDeleteStreak}
+            key={index}
             streak={streak}
+            onDeleteStreak={props.onDeleteStreak}
+            onIncrementStreak={props.onIncrementStreak}
           />
         ))}
       </div>

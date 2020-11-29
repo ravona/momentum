@@ -6,6 +6,10 @@
   margin: map-get($spacings, "medium") 0;
   padding: map-get($spacings, "medium");
 
+  &__title {
+    color: map-get($colors, "primary");
+  }
+
   &__section {
     display: flex;
     flex-direction: column;
@@ -25,7 +29,6 @@
     padding: 0.375rem 0.75rem;
     font-size: map-get($font_sizes, "medium");
     line-height: 1.5;
-    color: #495057;
     background-color: #fff;
     background-clip: padding-box;
   }

@@ -1,29 +1,32 @@
 [
   {
-    "id": "streak-1",
+    "id": "AzzgB3F6aa",
     "title": "Not smoking",
     "motivation": "So I can play basketball with my kids",
     "intervalNum": 1,
     "intervalUnit": "days",
+    "isActive": false,
     "count": 0,
-    "isActive": false
+    "timeLeft": null
   },
   {
-    "id": "streak-2",
+    "id": "BzzgB3F6ab",
     "title": "Jog every 2 days for a year",
     "motivation": "I want to lose weight and be healthy",
     "intervalNum": 2,
     "intervalUnit": "days",
+    "isActive": false,
     "count": 0,
-    "isActive": false
+    "timeLeft": null
   },
   {
-    "id": "streak-3",
+    "id": "CzzgB3F6ac",
     "title": "Learn 10 words in Spanish every 2 seconds",
     "motivation": "I want to be able to speak with the locals during my upcoming trip to Mexico",
     "intervalNum": 2,
     "intervalUnit": "seconds",
+    "isActive": false,
     "count": 0,
-    "isActive": false
+    "timeLeft": null
   }
 ]

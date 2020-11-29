@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 
 // data:
@@ -12,10 +12,20 @@ import { FaTrash, FaShareAlt } from "react-icons/fa";
 // style:
 import "./Streak.scss";
 
-export const Streak = ({ streak, onDeleteStreak }) => {
-  const { id, title, motivation, intervalNum, intervalUnit } = streak;
-  const [count, setCount] = useState(0);
-  const [isActive, setIsActive] = useState(false);
+export const Streak = ({ streak, onDeleteStreak, onIncrementStreak }) => {
+  // On current streak change --> save each streak individually localStorage
+  // useEffect(() => {
+  //   localStorage.setItem(`streak-${streak.id}`, JSON.stringify([streak]));
+  // }, [streak]);
+
+  const [count, setCount] = useState(streak.count);
+  const [isActive, setIsActive] = useState(streak.isActive);
+  const [timeLeft, setTimeLeft] = useState(streak.timeLeft);
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
 
   const getIntervalInMilliseconds = (intervalNum, intervalUnit) => {
     let intervalInMilliseconds;
@@ -38,23 +48,27 @@ export const Streak = ({ streak, onDeleteStreak }) => {
     return intervalInMilliseconds;
   };
 
+  const getDeadline = () =>
+    Date.now() +
+    getIntervalInMilliseconds(streak.intervalNum, streak.intervalUnit);
+
   const handleDeleteStreak = () => {
-    onDeleteStreak(id);
+    onDeleteStreak(streak.id);
   };
 
   const handleIncrement = () => {
-    setCount(count + 1);
     setIsActive(true);
+    setCount(count + 1);
+    setTimeLeft(getDeadline());
+
+    onIncrementStreak({ ...streak, isActive, count, timeLeft });
   };
 
-  const handleLoss = () => {
-    setCount(0);
-    setIsActive(false);
-  };
+  const handleLoss = () => {};
 
   return (
     <>
-      <div key={id} className={`streak streak-${id}`}>
+      <div className={`streak streak-${streak.id}`}>
         <div className={"streak__header"}>
           <div className={"streak__icon"}>
             <FaTrash onClick={handleDeleteStreak} />
@@ -66,10 +80,10 @@ export const Streak = ({ streak, onDeleteStreak }) => {
         </div>
 
         <div className={"streak__body"}>
-          <h3 className={"streak__title"}>{title}</h3>
-          <h4 className={"streak__motivation"}>{motivation}</h4>
+          <h3 className={"streak__title"}>{streak.title}</h3>
+          <h4 className={"streak__motivation"}>{streak.motivation}</h4>
           <h5 className={"streak__interval"}>
-            Update every {intervalNum} {intervalUnit}
+            Update every {streak.intervalNum} {streak.intervalUnit}
           </h5>
 
           {isActive === true ? (
@@ -78,23 +92,13 @@ export const Streak = ({ streak, onDeleteStreak }) => {
                 <Notification text={getRandomArrayItem(messages.increment)} />
               </div>
               <div className="streak__countdown">
-                <Countdown
-                  date={
-                    Date.now() +
-                    getIntervalInMilliseconds(intervalNum, intervalUnit)
-                  }
-                  onComplete={handleLoss}
-                />
+                <Countdown date={getDeadline()} onComplete={handleLoss}>
+                  <Notification text={getRandomArrayItem(messages.loss)} />
+                </Countdown>
               </div>
+              <div className="streak__counter">{count}</div>
             </>
-          ) : (
-            <>
-              <div className="streak__notification">
-                <Notification text={getRandomArrayItem(messages.loss)} />
-              </div>
-            </>
-          )}
-          <div className="streak__counter">{count}</div>
+          ) : null}
         </div>
 
         <div className="streak__footer">

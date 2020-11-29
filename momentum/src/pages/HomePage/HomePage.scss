@@ -1,0 +1,24 @@
+@import "../../style/global";
+
+.HomePage {
+  @include momentum-border;
+  padding: map-get($spacings, "small") map-get($spacings, "medium");
+
+  &__title {
+    margin-bottom: map-get($spacings, "tiny");
+    color: map-get($colors, "batman");
+  }
+
+  &__subtitle {
+    margin-bottom: map-get($spacings, "tiny");
+  }
+
+  .btn {
+    margin: map-get($spacings, "tiny") 0;
+    width: 100%;
+    @media only screen and (min-width: 720px) {
+      width: auto;
+      margin-right: map-get($spacings, "tiny");
+    }
+  }
+}

@@ -1,17 +1,11 @@
 @import "./style/reset";
+@import "./style/global";
 @import "./style/colors";
 @import "./style/fonts";
 @import "./style/buttons";
 
 .App {
   font-family: "Fredoka One", cursive;
-}
-
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 @media only screen and (min-width: 720px) {

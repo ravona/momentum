@@ -16,10 +16,10 @@ export const Nav = () => {
             <li className="navigation__item">
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li className="navigation__item">
               <Link to="/StreaksPage">Streaks</Link>
             </li>
-            <li>
+            <li className="navigation__item">
               <Link to="/ChallengePage">Challenge</Link>
             </li>
           </ul>

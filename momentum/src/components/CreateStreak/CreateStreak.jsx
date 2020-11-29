@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { nanoid } from "nanoid";
 
 // style:
 import "./CreateStreak.scss";
 
 const CreateStreak = ({ onCreateStreak }) => {
-  const [id] = useState(nanoid(10));
+  const [id] = useState("");
   const [title, setTitle] = useState("");
   const [motivation, setMotivation] = useState("");
   const [intervalNum, setIntervalNum] = useState(1);
@@ -13,14 +12,21 @@ const CreateStreak = ({ onCreateStreak }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newStreak = { id, title, motivation, intervalNum, intervalUnit };
+    const newStreak = {
+      id,
+      title,
+      motivation,
+      intervalNum,
+      intervalUnit,
+      count: 0,
+    };
     onCreateStreak(newStreak);
   };
 
   return (
     <>
       <form onSubmit={handleSubmit} className="form">
-        <h2>Create New Streak</h2>
+        <h2 className="form__title">Create New Streak</h2>
         <div className="form__section">
           <label className="form__label">Name your streak:</label>
           <input
