@@ -12,15 +12,20 @@ import { FaTrash, FaShareAlt } from "react-icons/fa";
 // style:
 import "./Streak.scss";
 
-export const Streak = ({ streak, onDeleteStreak, onIncrementStreak }) => {
-  // On current streak change --> save each streak individually localStorage
-  // useEffect(() => {
-  //   localStorage.setItem(`streak-${streak.id}`, JSON.stringify([streak]));
-  // }, [streak]);
-
+export const Streak = ({ streak, onDeleteStreak }) => {
   const [count, setCount] = useState(streak.count);
   const [isActive, setIsActive] = useState(streak.isActive);
   const [timeLeft, setTimeLeft] = useState(streak.timeLeft);
+
+  // On current streak change --> save each streak individually localStorage
+  useEffect(() => {
+    localStorage.setItem(
+      `streak-${streak.id}`,
+      JSON.stringify([
+        { ...streak, count: count, timeLeft: timeLeft, isActive: isActive },
+      ])
+    );
+  }, [count, isActive, timeLeft]);
 
   useEffect(() => {
     // Update the document title using the browser API
@@ -60,11 +65,12 @@ export const Streak = ({ streak, onDeleteStreak, onIncrementStreak }) => {
     setIsActive(true);
     setCount(count + 1);
     setTimeLeft(getDeadline());
-
-    onIncrementStreak({ ...streak, isActive, count, timeLeft });
   };
 
-  const handleLoss = () => {};
+  const handleLoss = () => {
+    setIsActive(false);
+    setCount(0);
+  };
 
   return (
     <>
@@ -96,9 +102,9 @@ export const Streak = ({ streak, onDeleteStreak, onIncrementStreak }) => {
                   <Notification text={getRandomArrayItem(messages.loss)} />
                 </Countdown>
               </div>
-              <div className="streak__counter">{count}</div>
             </>
           ) : null}
+          <div className="streak__counter">{count}</div>
         </div>
 
         <div className="streak__footer">

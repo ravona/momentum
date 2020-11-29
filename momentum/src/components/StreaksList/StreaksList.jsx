@@ -7,16 +7,16 @@ import { Streak } from "../Streak/Streak";
 // style:
 import "./Streaks.scss";
 
-const StreaksList = (props) => {
+const StreaksList = ({ streaks, onDeleteStreak, onIncrementStreak }) => {
   return (
     <>
       <div className="streaks">
-        {props.streaks.map((streak, index) => (
+        {streaks.map((streak, index) => (
           <Streak
             key={index}
             streak={streak}
-            onDeleteStreak={props.onDeleteStreak}
-            onIncrementStreak={props.onIncrementStreak}
+            onDeleteStreak={onDeleteStreak}
+            onIncrementStreak={onIncrementStreak}
           />
         ))}
       </div>
