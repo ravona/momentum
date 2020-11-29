@@ -34,11 +34,7 @@ export const StreaksPage = () => {
         </Toggle>
       </div>
 
-      <StreaksList
-        onIncrementStreak={incrementStreak}
-        onDeleteStreak={deleteStreak}
-        streaks={streaks}
-      />
+      <StreaksList onDeleteStreak={deleteStreak} streaks={streaks} />
     </>
   );
 };
