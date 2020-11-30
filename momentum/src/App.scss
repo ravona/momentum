@@ -6,11 +6,11 @@
 
 .App {
   font-family: "Fredoka One", cursive;
+  margin: 1rem auto 0;
 }
 
 @media only screen and (min-width: 720px) {
   .App {
     width: 1200px;
-    margin: 0 auto;
   }
 }

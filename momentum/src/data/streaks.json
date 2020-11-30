@@ -1,7 +1,7 @@
 [
   {
     "id": "AzzgB3F6aa",
-    "title": "Not smoking",
+    "title": "I quit smoking!",
     "motivation": "So I can play basketball with my kids",
     "intervalNum": 1,
     "intervalUnit": "days",
@@ -11,8 +11,8 @@
   },
   {
     "id": "BzzgB3F6ab",
-    "title": "Jog every 2 days for a year",
-    "motivation": "I want to lose weight and be healthy",
+    "title": "I Jog every 2 days for a year",
+    "motivation": "I want to lose weight and be fit",
     "intervalNum": 2,
     "intervalUnit": "days",
     "isActive": false,
@@ -21,7 +21,7 @@
   },
   {
     "id": "CzzgB3F6ac",
-    "title": "Learn 10 words in Spanish every 2 seconds",
+    "title": "I Learn 10 words in Spanish every 2 seconds",
     "motivation": "I want to be able to speak with the locals during my upcoming trip to Mexico",
     "intervalNum": 2,
     "intervalUnit": "seconds",

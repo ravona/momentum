@@ -26,6 +26,14 @@ export const StreaksPage = () => {
     setStreaks([...streaks, newStreak]);
   };
 
+  const handleStreakUpdate = (id, isActive, count, timeLeft) => {
+    setStreaks(
+      streaks.map((streak) =>
+        streak.id === id ? { ...streak, isActive, count, timeLeft } : streak
+      )
+    );
+  };
+
   return (
     <>
       <div className="CreateStreak">
@@ -34,7 +42,11 @@ export const StreaksPage = () => {
         </Toggle>
       </div>
 
-      <StreaksList onDeleteStreak={deleteStreak} streaks={streaks} />
+      <StreaksList
+        onDeleteStreak={deleteStreak}
+        onStreakUpdate={handleStreakUpdate}
+        streaks={streaks}
+      />
     </>
   );
 };

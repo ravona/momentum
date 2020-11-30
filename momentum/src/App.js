@@ -10,9 +10,7 @@ import "./App.scss";
 function App() {
   return (
     <div className="App">
-      <Container>
-        <Nav />
-      </Container>
+      <Nav />
     </div>
   );
 }

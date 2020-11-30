@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { nanoid } from "nanoid";
+import { React, useState } from "react";
 
 // style:
 import "./CreateStreak.scss";
 
 const CreateStreak = ({ onCreateStreak }) => {
-  const [id] = useState("");
   const [title, setTitle] = useState("");
   const [motivation, setMotivation] = useState("");
   const [intervalNum, setIntervalNum] = useState(1);
@@ -13,12 +13,14 @@ const CreateStreak = ({ onCreateStreak }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newStreak = {
-      id,
+      id: nanoid(10),
       title,
+      isActive: false,
       motivation,
       intervalNum,
       intervalUnit,
       count: 0,
+      timeLeft: null,
     };
     onCreateStreak(newStreak);
   };

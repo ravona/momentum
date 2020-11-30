@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { React, useEffect } from "react";
 import Countdown from "react-countdown";
 
 // data:
@@ -12,25 +12,11 @@ import { FaTrash, FaShareAlt } from "react-icons/fa";
 // style:
 import "./Streak.scss";
 
-export const Streak = ({ streak, onDeleteStreak }) => {
-  const [count, setCount] = useState(streak.count);
-  const [isActive, setIsActive] = useState(streak.isActive);
-  const [timeLeft, setTimeLeft] = useState(streak.timeLeft);
-
+export const Streak = ({ streak, onDeleteStreak, onStreakUpdate }) => {
   // On current streak change --> save each streak individually localStorage
   useEffect(() => {
-    localStorage.setItem(
-      `streak-${streak.id}`,
-      JSON.stringify([
-        { ...streak, count: count, timeLeft: timeLeft, isActive: isActive },
-      ])
-    );
-  }, [count, isActive, timeLeft]);
-
-  useEffect(() => {
-    // Update the document title using the browser API
-    document.title = `You clicked ${count} times`;
-  });
+    localStorage.setItem(`streak-${streak.id}`, JSON.stringify({ streak }));
+  }, [streak]);
 
   const getIntervalInMilliseconds = (intervalNum, intervalUnit) => {
     let intervalInMilliseconds;
@@ -61,15 +47,22 @@ export const Streak = ({ streak, onDeleteStreak }) => {
     onDeleteStreak(streak.id);
   };
 
-  const handleIncrement = () => {
-    setIsActive(true);
-    setCount(count + 1);
-    setTimeLeft(getDeadline());
+  const handleStreakIncrement = () => {
+    onStreakUpdate(
+      streak.id,
+      (streak.isActive = true),
+      (streak.count = streak.count + 1),
+      (streak.timeLeft = getDeadline())
+    );
   };
 
-  const handleLoss = () => {
-    setIsActive(false);
-    setCount(0);
+  const handleStreakLoss = () => {
+    onStreakUpdate(
+      streak.id,
+      (streak.isActive = false),
+      (streak.count = 0),
+      (streak.timeLeft = null)
+    );
   };
 
   return (
@@ -92,25 +85,32 @@ export const Streak = ({ streak, onDeleteStreak }) => {
             Update every {streak.intervalNum} {streak.intervalUnit}
           </h5>
 
-          {isActive === true ? (
-            <>
-              <div className="streak__notification">
-                <Notification text={getRandomArrayItem(messages.increment)} />
-              </div>
-              <div className="streak__countdown">
-                <Countdown date={getDeadline()} onComplete={handleLoss}>
-                  <Notification text={getRandomArrayItem(messages.loss)} />
-                </Countdown>
-              </div>
-            </>
+          <div className="streak__notification">
+            <Notification
+              text={
+                streak.isActive
+                  ? getRandomArrayItem(messages.increment)
+                  : getRandomArrayItem(messages.loss)
+              }
+            />
+          </div>
+
+          {streak.isActive ? (
+            <div className="streak__countdown">
+              <Countdown
+                date={streak.timeLeft}
+                onComplete={handleStreakLoss}
+              ></Countdown>
+            </div>
           ) : null}
-          <div className="streak__counter">{count}</div>
+
+          <div className="streak__counter">{streak.count}</div>
         </div>
 
         <div className="streak__footer">
           <button
-            onClick={handleIncrement}
-            className="btn btn--medium btn--success btn--light btn--uppercase"
+            onClick={handleStreakIncrement}
+            className="btn btn--small btn--success btn--light"
           >
             Increment
           </button>

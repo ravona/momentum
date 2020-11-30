@@ -44,8 +44,9 @@
   }
 
   &__notification {
-    color: map-get($colors, "secondary");
+    font-size: map-get($font_sizes, "medium");
     margin-bottom: map-get($spacings, "small");
+    color: map-get($colors, "secondary");
     flex-grow: 1;
   }
 
