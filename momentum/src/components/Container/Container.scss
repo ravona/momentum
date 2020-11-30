@@ -1,0 +1,5 @@
+@import "../../style/global";
+
+.container {
+  padding: map-get($spacings, "tiny") map-get($spacings, "small");
+}

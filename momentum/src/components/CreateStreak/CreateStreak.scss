@@ -1,7 +1,11 @@
-.streak-form {
-  text-align: center;
-  border: 1px dashed black;
-  padding: 1rem;
-  margin: 1rem;
-  background-color: rgba(0, 0, 0, 0.05);
+@import "../../style/global";
+@import "../../style/forms";
+
+.CreateStreak {
+  padding: map-get($spacings, "medium");
+
+  @media only screen and (min-width: $tablet-width) {
+    width: 25rem;
+    margin: 0 auto;
+  }
 }

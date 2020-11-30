@@ -1,67 +1,124 @@
-import React, { useState } from "react";
+import { React, useEffect } from "react";
+import Countdown from "react-countdown";
 
 // data:
 import messages from "../../data/messages.json";
 
 // components:
-import Countdown from "react-countdown";
 import { getRandomArrayItem } from "../../utils/utils";
-import { BsTrash } from "react-icons/bs";
-
-// context:
-import { useStreaks } from "../../context/StreaksProvider";
-import { useNotification } from "../../context/NotificationProvider";
+import Notification from "../Notification/Notification";
+import { FaTrash, FaShareAlt, FaRegClock } from "react-icons/fa";
 
 // style:
 import "./Streak.scss";
 
-export const Streak = ({ id, title, motivation }) => {
-  const { deleteStreak } = useStreaks();
-  const { printNotification } = useNotification();
+export const Streak = ({ streak, onDeleteStreak, onStreakUpdate }) => {
+  // On current streak change --> save each streak individually localStorage
+  useEffect(() => {
+    localStorage.setItem(`Streak-${streak.id}`, JSON.stringify({ streak }));
+  }, [streak]);
 
-  const [count, setCount] = useState(0);
-  const [status, setStatus] = useState(false);
+  useEffect(() => {}, [streak.isActive]);
 
-  const handleIncrement = () => {
-    setStatus(true);
-    setCount(count + 1);
-
-    const getRandomSuccessMessage = getRandomArrayItem(messages.increment);
-    printNotification(getRandomSuccessMessage);
+  const getIntervalInMilliseconds = (intervalNum, intervalUnit) => {
+    let intervalInMilliseconds;
+    switch (intervalUnit) {
+      case "seconds":
+        intervalInMilliseconds = intervalNum * 1000;
+        break;
+      case "minutes":
+        intervalInMilliseconds = intervalNum * 60000;
+        break;
+      case "hours":
+        intervalInMilliseconds = intervalNum * 3.6e6;
+        break;
+      case "days":
+        intervalInMilliseconds = intervalNum * 8.64e7;
+        break;
+      default:
+        intervalInMilliseconds = intervalNum * 8.64e7;
+    }
+    return intervalInMilliseconds;
   };
 
-  const handleLoss = () => {
-    setStatus(false);
-    setCount(0);
+  const getDeadline = () =>
+    Date.now() +
+    getIntervalInMilliseconds(streak.intervalNum, streak.intervalUnit);
 
-    const getRandomLossMessage = getRandomArrayItem(messages.loss);
-    printNotification(getRandomLossMessage);
+  const handleDeleteStreak = () => {
+    onDeleteStreak(streak.id);
   };
 
-  const handleDeleteStreak = (e) => {
-    e.preventDefault();
-    deleteStreak(id);
+  const handleStreakIncrement = () => {
+    onStreakUpdate(
+      streak.id,
+      (streak.isActive = true),
+      (streak.count = streak.count + 1),
+      (streak.timeLeft = getDeadline())
+    );
+  };
+
+  const handleStreakLoss = () => {
+    onStreakUpdate(
+      streak.id,
+      (streak.isActive = false),
+      (streak.count = 0),
+      (streak.timeLeft = null)
+    );
   };
 
   return (
     <>
-      <div key={id} className={"streak"}>
-        <div className={"streak__header"}>
-          <BsTrash className={"streak__icon"} onClick={handleDeleteStreak} />
+      <div
+        className={`Streak Streak--${streak.id} Streak--${
+          streak.isActive ? "active" : "inactive"
+        }`}
+      >
+        <div className={"Streak__header"}>
+          <div className={"Streak__icon Streak__icon--share"}>
+            <FaShareAlt />
+          </div>
+
+          <div className={"Streak__icon Streak__icon--delete"}>
+            <FaTrash onClick={handleDeleteStreak} />
+          </div>
         </div>
 
-        <div className={"streak__body"}>
-          <h4 className={"streak__title"}>{title}</h4>
-          <h5 className={"streak__motivation"}>{motivation}</h5>
-          <div className="streak__countdown">
-            {status === true ? (
-              <Countdown date={Date.now() + 2000} onComplete={handleLoss} />
-            ) : null}
+        <div className={"Streak__body"}>
+          <h3 className={"Streak__title"}>{streak.title}</h3>
+          <h4 className={"Streak__motivation"}>{streak.motivation}</h4>
+
+          <ul className={"Streak__list"}>
+            <li className={"Streak__list-item"}>
+              Update every {streak.intervalNum} {streak.intervalUnit} to prevent
+              reset.
+            </li>
+            <li className={"Streak__list-item"}>
+              {streak.goal - streak.count === 0
+                ? "Congratulations, you have reached your goal!"
+                : `${streak.goal - streak.count} repetitions to reach goal.`}
+            </li>
+          </ul>
+        </div>
+
+        <div className="Streak__footer">
+          {streak.isActive && streak.count < streak.goal ? (
+            <div className="Streak__countdown">
+              <Countdown
+                date={streak.timeLeft}
+                onComplete={handleStreakLoss}
+              ></Countdown>
+            </div>
+          ) : null}
+
+          <div className="Streak__counter">
+            {streak.goal === streak.count ? "Success!" : streak.count}
           </div>
-          <div className="streak__counter">{count}</div>
+
           <button
-            onClick={handleIncrement}
-            className="btn btn--primary btn--medium"
+            disabled={streak.goal === streak.count ? true : false}
+            onClick={handleStreakIncrement}
+            className="btn btn--small btn--success btn--light"
           >
             Increment
           </button>

@@ -1,4 +1,15 @@
-@use './style/colors';
-@use './style/reset';
-@use './style/fonts';
-@use './style/buttons';
+@import "./style/reset";
+@import "./style/global";
+@import "./style/colors";
+@import "./style/fonts";
+@import "./style/buttons";
+
+.App {
+  font-family: "Fredoka One", cursive;
+  margin: 1rem 1rem 0 1rem;
+
+  @media only screen and (min-width: $desktop-width) {
+    width: 1200px;
+    margin: 1rem auto 0 auto;
+  }
+}

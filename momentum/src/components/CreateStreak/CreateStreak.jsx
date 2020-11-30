@@ -1,82 +1,117 @@
-import React, { useState } from "react";
-import { useStreaks } from "../../context/StreaksProvider";
+import { React, useState } from "react";
+import { nanoid } from "nanoid";
 
 // style:
 import "./CreateStreak.scss";
 
-export const CreateStreak = () => {
+const CreateStreak = ({ onCreateStreak }) => {
   const [title, setTitle] = useState("");
   const [motivation, setMotivation] = useState("");
   const [intervalNum, setIntervalNum] = useState(1);
   const [intervalUnit, setIntervalUnit] = useState("days");
+  const [goal, setGoal] = useState("30");
 
-  const { addStreak } = useStreaks();
   const handleSubmit = (e) => {
-    let newStreak = { title, motivation, intervalNum, intervalUnit };
     e.preventDefault();
-    addStreak(newStreak);
+    const newStreak = {
+      id: nanoid(10),
+      title,
+      isActive: false,
+      motivation,
+      intervalNum,
+      intervalUnit,
+      count: 0,
+      goal,
+      timeLeft: null,
+    };
+    onCreateStreak(newStreak);
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="streak-form">
-        <h3>Create New Streak</h3>
+      <form onSubmit={handleSubmit} className="form">
+        <h2 className="form__title">Create New Streak</h2>
+        <div className="form__section">
+          <label className="form__label">Name your streak:</label>
 
-        <div className="streak-form_section">
-          <label className="streak-form_label">Name your Streak:</label>
           <input
+            autoComplete="off"
+            required
+            className="form__input"
             name="title"
             type="text"
             value={title}
-            placeholder="Ex: Stopped smoking"
+            placeholder="I quit smoking!"
             onChange={(e) => setTitle(e.target.value)}
-            required
           />
         </div>
 
-        <div className="streak-form_section">
-          <label className="streak-form_label">
-            Why maintaining this Streak is important to you?
+        <div className="form__section">
+          <label className="form__label">
+            Why maintaining this streak is important to you?
           </label>
+
           <input
+            required
+            autoComplete="off"
+            className="form__input"
             name="motivation"
             type="text"
             value={motivation}
-            placeholder="Ex: So I can play soccer at the park with my kids"
+            placeholder="So I can play basketball with my kids"
             onChange={(e) => setMotivation(e.target.value)}
-            required
           />
         </div>
 
-        <div className="streak-form_section">
-          <label className="streak-form_label">Should be updated every</label>
+        <div className="form__section">
+          <label className="form__label">Should be updated Every</label>
+
           <input
+            required
+            className="form__input"
             name="intervalNum"
             type="number"
             value={intervalNum}
             onChange={(e) => setIntervalNum(e.target.value)}
-            required
           />
         </div>
 
-        <div className="streak-form_section">
-          <label className="streak-form_label">
-            Select time interval
-            <select
-              name="intervalUnit"
-              value={intervalUnit}
-              onChange={setIntervalUnit}
-            >
-              <option value="seconds">Seconds</option>
-              <option value="minutes">Minutes</option>
-              <option value="hours">Hours</option>
-              <option value="days">Days</option>
-            </select>
-          </label>
+        <div className="form__section">
+          <label className="form__label">Pick time interval</label>
+
+          <select
+            required
+            className="form__select"
+            name="intervalUnit"
+            value={intervalUnit}
+            onChange={setIntervalUnit}
+          >
+            <option value="seconds">Seconds</option>
+            <option value="minutes">Minutes</option>
+            <option value="hours">Hours</option>
+            <option value="days">Days</option>
+          </select>
         </div>
 
-        <div className="streak-form_section">
-          <button type="submit" value="Create">
+        <div className="form__section">
+          <label className="form__label">
+            End Streak once counter reaches:
+          </label>
+          <input
+            className="form__input"
+            name="intervalNum"
+            type="number"
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
+          />
+        </div>
+
+        <div className="form__section">
+          <button
+            className="btn btn--small btn--success btn--light btn--uppercase"
+            type="submit"
+            value="Create"
+          >
             Create
           </button>
         </div>
@@ -84,3 +119,5 @@ export const CreateStreak = () => {
     </>
   );
 };
+
+export default CreateStreak;

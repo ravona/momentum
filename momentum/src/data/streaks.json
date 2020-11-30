@@ -1,29 +1,35 @@
 [
   {
-    "id": "streak-1",
-    "title": "Stop Smoking",
+    "id": "AzzgB3F6aa",
+    "title": "I quit smoking!",
     "motivation": "So I can play basketball with my kids",
     "intervalNum": 1,
     "intervalUnit": "days",
+    "isActive": false,
     "count": 0,
-    "isActive": false
+    "goal": 10,
+    "timeLeft": null
   },
   {
-    "id": "streak-2",
-    "title": "Jog every 2 days for a year",
-    "motivation": "I want to lose weight and be healthy",
-    "intervalNum": 2,
+    "id": "BzzgB3F6ab",
+    "title": "Practice playing the guitar for 2 hours every day",
+    "motivation": "So I can join a band",
+    "intervalNum": 1,
     "intervalUnit": "days",
+    "isActive": false,
     "count": 0,
-    "isActive": false
+    "goal": 30,
+    "timeLeft": null
   },
   {
-    "id": "streak-3",
-    "title": "Learn 10 words in Spanish every 2 seconds",
-    "motivation": "I want to be able to speak with the locals during my upcoming trip to Mexico",
+    "id": "CzzgB3F6ac",
+    "title": "I learn 10 words in Spanish every day",
+    "motivation": "I want to speak with the locals during my upcoming trip to Mexico",
     "intervalNum": 2,
     "intervalUnit": "seconds",
+    "isActive": false,
     "count": 0,
-    "isActive": false
+    "goal": 3,
+    "timeLeft": null
   }
 ]

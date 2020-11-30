@@ -1,21 +1,74 @@
+@import "../../style/global";
 @import "../../style/colors";
 
-.streak {
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  padding: 1rem;
-  background-color: map-get($colors, "light");
-  width: 18rem;
+.Streak {
+  @include momentum-border;
+  @include momentum-bevel;
+  padding: map-get($spacings, "small") map-get($spacings, "medium");
+  display: flex;
+  flex-direction: column;
 
-  &__title {
-    margin-bottom: 1rem;
-  }
-
-  &__body {
-    text-align: center;
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: map-get($spacings, "tiny");
   }
 
   &__icon {
     cursor: pointer;
+    padding: map-get($spacings, "tiny");
+
+    &--delete {
+      &:hover {
+        color: map-get($colors, "danger");
+      }
+    }
+
+    &--share {
+      &:hover {
+        color: map-get($colors, "action");
+      }
+    }
+  }
+
+  &__title {
+    font-size: map-get($font_sizes, "large");
+    margin-bottom: map-get($spacings, "tiny");
+  }
+
+  &__motivation {
+    font-size: map-get($font_sizes, "medium");
+    margin-bottom: map-get($spacings, "small");
+    color: map-get($colors, "success");
+  }
+
+  &__list {
+    list-style: disc inside;
+    color: map-get($colors, "ocean");
+    margin-bottom: map-get($spacings, "small");
+  }
+
+  &__notification {
+    font-size: map-get($font_sizes, "medium");
+    margin-bottom: map-get($spacings, "small");
+    color: map-get($colors, "secondary");
+  }
+
+  &__body {
+    flex-grow: 1;
+  }
+
+  &__countdown {
+    font-size: map-get($font_sizes, "medium");
+    text-align: center;
+  }
+
+  &__counter {
+    font-size: map-get($font_sizes, "huge");
+    color: map-get($colors, "success");
+  }
+
+  &__footer {
+    text-align: center;
   }
 }

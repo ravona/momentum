@@ -1,17 +1,14 @@
 import React from "react";
 
-// context:
-import { useNotification } from "../../context/NotificationProvider";
-
 // style:
 import "./Notification.scss";
 
-export const Notification = () => {
-  const { notification } = useNotification();
-
+const Notification = ({ text }) => {
   return (
     <>
-      <h2 className="notification">{notification}</h2>
+      <p className="notification">{text}</p>
     </>
   );
 };
+
+export default Notification;

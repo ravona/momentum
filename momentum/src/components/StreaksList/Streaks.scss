@@ -1,6 +1,16 @@
-.streaks {
+@import "../../style/global";
+
+.Streaks {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  justify-items: center;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  justify-content: stretch;
+
+  @media only screen and (min-width: $tablet-width) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media only screen and (min-width: $desktop-width) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
