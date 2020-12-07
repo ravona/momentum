@@ -43,9 +43,21 @@
   }
 
   &__list {
-    list-style: disc inside;
-    color: map-get($colors, "ocean");
     margin-bottom: map-get($spacings, "small");
+  }
+
+  &__list-item {
+    @include momentum-border;
+    display: flex;
+    align-items: center;
+    background-color: rgba(map-get($colors, "primary"), 0.05);
+    margin-bottom: map-get($spacings, "small");
+    padding: map-get($spacings, "tiny");
+  }
+
+  &__list-item__icon {
+    padding: map-get($spacings, "tiny");
+    flex-shrink: 0;
   }
 
   &__notification {

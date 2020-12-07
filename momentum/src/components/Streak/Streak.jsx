@@ -1,25 +1,11 @@
-import { React, useEffect } from "react";
+import {React} from "react";
 import Countdown from "react-countdown";
-
-// data:
-import messages from "../../data/messages.json";
-
-// components:
-import { getRandomArrayItem } from "../../utils/utils";
-import Notification from "../Notification/Notification";
-import { FaTrash, FaShareAlt, FaRegClock } from "react-icons/fa";
+import {FaTrash, FaShareAlt, FaRegClock, FaTrophy} from "react-icons/fa";
 
 // style:
 import "./Streak.scss";
 
-export const Streak = ({ streak, onDeleteStreak, onStreakUpdate }) => {
-  // On current streak change --> save each streak individually localStorage
-  useEffect(() => {
-    localStorage.setItem(`Streak-${streak.id}`, JSON.stringify({ streak }));
-  }, [streak]);
-
-  useEffect(() => {}, [streak.isActive]);
-
+export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
   const getIntervalInMilliseconds = (intervalNum, intervalUnit) => {
     let intervalInMilliseconds;
     switch (intervalUnit) {
@@ -50,30 +36,33 @@ export const Streak = ({ streak, onDeleteStreak, onStreakUpdate }) => {
   };
 
   const handleStreakIncrement = () => {
-    onStreakUpdate(
-      streak.id,
-      (streak.isActive = true),
-      (streak.count = streak.count + 1),
-      (streak.timeLeft = getDeadline())
-    );
+    streak.count = streak.count + 1;
+    streak.timeLeft = getDeadline();
+    onStreakUpdate((streak.isActive = true));
   };
 
   const handleStreakLoss = () => {
-    onStreakUpdate(
-      streak.id,
-      (streak.isActive = false),
-      (streak.count = 0),
-      (streak.timeLeft = null)
-    );
+    streak.count = 0;
+    streak.timeLeft = null;
+    onStreakUpdate((streak.isActive = false));
   };
+
+  let goalStatus;
+  if (streak.goal > streak.count) {
+    goalStatus = `${streak.goal - streak.count} repetitions to reach goal!`;
+  }
+
+  if (streak.count > streak.goal) {
+    goalStatus = `${streak.count - streak.goal} repetitions beyond your goal!`;
+  }
+
+  if (streak.count === streak.goal) {
+    goalStatus = "Congratulations, you have reached your goal!";
+  }
 
   return (
     <>
-      <div
-        className={`Streak Streak--${streak.id} Streak--${
-          streak.isActive ? "active" : "inactive"
-        }`}
-      >
+      <div className={`Streak Streak--${streak.isActive ? "active" : null}`}>
         <div className={"Streak__header"}>
           <div className={"Streak__icon Streak__icon--share"}>
             <FaShareAlt />
@@ -90,19 +79,21 @@ export const Streak = ({ streak, onDeleteStreak, onStreakUpdate }) => {
 
           <ul className={"Streak__list"}>
             <li className={"Streak__list-item"}>
-              Update every {streak.intervalNum} {streak.intervalUnit} to prevent
-              reset.
+              <FaRegClock className="Streak__list-item__icon" />
+              <span>
+                Update every {streak.intervalNum} {streak.intervalUnit} to
+                prevent reset.
+              </span>
             </li>
             <li className={"Streak__list-item"}>
-              {streak.goal - streak.count === 0
-                ? "Congratulations, you have reached your goal!"
-                : `${streak.goal - streak.count} repetitions to reach goal.`}
+              <FaTrophy className="Streak__list-item__icon" />
+              <span>{goalStatus}</span>
             </li>
           </ul>
         </div>
 
         <div className="Streak__footer">
-          {streak.isActive && streak.count < streak.goal ? (
+          {streak.isActive ? (
             <div className="Streak__countdown">
               <Countdown
                 date={streak.timeLeft}
@@ -111,12 +102,9 @@ export const Streak = ({ streak, onDeleteStreak, onStreakUpdate }) => {
             </div>
           ) : null}
 
-          <div className="Streak__counter">
-            {streak.goal === streak.count ? "Success!" : streak.count}
-          </div>
+          <div className="Streak__counter">{streak.count}</div>
 
           <button
-            disabled={streak.goal === streak.count ? true : false}
             onClick={handleStreakIncrement}
             className="btn btn--small btn--success btn--light"
           >

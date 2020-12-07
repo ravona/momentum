@@ -1,15 +1,15 @@
-import { React, useState } from "react";
-import { nanoid } from "nanoid";
+import {React, useState} from "react";
+import {nanoid} from "nanoid";
 
 // style:
 import "./CreateStreak.scss";
 
-const CreateStreak = ({ onCreateStreak }) => {
+const CreateStreak = ({onCreateStreak}) => {
   const [title, setTitle] = useState("");
   const [motivation, setMotivation] = useState("");
   const [intervalNum, setIntervalNum] = useState(1);
   const [intervalUnit, setIntervalUnit] = useState("days");
-  const [goal, setGoal] = useState("30");
+  const [goal, setGoal] = useState(30);
 
   const handleSubmit = (e) => {
     e.preventDefault();
