@@ -1,35 +1,16 @@
 import {React} from "react";
 import Countdown from "react-countdown";
+import add from "date-fns/add";
 import {FaTrash, FaShareAlt, FaRegClock, FaTrophy} from "react-icons/fa";
 
 // style:
 import "./Streak.scss";
 
 export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
-  const getIntervalInMilliseconds = (intervalNum, intervalUnit) => {
-    let intervalInMilliseconds;
-    switch (intervalUnit) {
-      case "seconds":
-        intervalInMilliseconds = intervalNum * 1000;
-        break;
-      case "minutes":
-        intervalInMilliseconds = intervalNum * 60000;
-        break;
-      case "hours":
-        intervalInMilliseconds = intervalNum * 3.6e6;
-        break;
-      case "days":
-        intervalInMilliseconds = intervalNum * 8.64e7;
-        break;
-      default:
-        intervalInMilliseconds = intervalNum * 8.64e7;
-    }
-    return intervalInMilliseconds;
-  };
-
   const getDeadline = () =>
-    Date.now() +
-    getIntervalInMilliseconds(streak.intervalNum, streak.intervalUnit);
+    add(new Date(), {
+      [streak.intervalUnit]: streak.intervalNum,
+    });
 
   const handleDeleteStreak = () => {
     onDeleteStreak(streak.id);
@@ -37,13 +18,13 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
 
   const handleStreakIncrement = () => {
     streak.count = streak.count + 1;
-    streak.timeLeft = getDeadline();
+    streak.deadline = getDeadline();
     onStreakUpdate((streak.isActive = true));
   };
 
   const handleStreakLoss = () => {
     streak.count = 0;
-    streak.timeLeft = null;
+    streak.deadline = null;
     onStreakUpdate((streak.isActive = false));
   };
 
@@ -85,10 +66,12 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
                 prevent reset.
               </span>
             </li>
-            <li className={"Streak__list-item"}>
-              <FaTrophy className="Streak__list-item__icon" />
-              <span>{goalStatus}</span>
-            </li>
+            {streak.goal ? (
+              <li className={"Streak__list-item"}>
+                <FaTrophy className="Streak__list-item__icon" />
+                <span>{goalStatus}</span>
+              </li>
+            ) : null}
           </ul>
         </div>
 
@@ -96,7 +79,7 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
           {streak.isActive ? (
             <div className="Streak__countdown">
               <Countdown
-                date={streak.timeLeft}
+                date={streak.deadline}
                 onComplete={handleStreakLoss}
               ></Countdown>
             </div>

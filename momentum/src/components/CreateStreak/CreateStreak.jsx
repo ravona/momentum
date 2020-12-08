@@ -9,7 +9,7 @@ const CreateStreak = ({onCreateStreak}) => {
   const [motivation, setMotivation] = useState("");
   const [intervalNum, setIntervalNum] = useState(1);
   const [intervalUnit, setIntervalUnit] = useState("days");
-  const [goal, setGoal] = useState(30);
+  const [goal, setGoal] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const CreateStreak = ({onCreateStreak}) => {
       intervalUnit,
       count: 0,
       goal,
-      timeLeft: null,
+      deadline: null,
     };
     onCreateStreak(newStreak);
   };
@@ -84,7 +84,7 @@ const CreateStreak = ({onCreateStreak}) => {
             className="form__select"
             name="intervalUnit"
             value={intervalUnit}
-            onChange={setIntervalUnit}
+            onChange={(e) => setIntervalUnit(e.target.value)}
           >
             <option value="seconds">Seconds</option>
             <option value="minutes">Minutes</option>
