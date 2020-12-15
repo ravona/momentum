@@ -39,11 +39,6 @@
   &__motivation {
     font-size: map-get($font_sizes, "medium");
     margin-bottom: map-get($spacings, "small");
-    color: map-get($colors, "success");
-
-    .Streak--inactive & {
-      color: map-get($colors, "primary");
-    }
   }
 
   &__list {
@@ -51,23 +46,25 @@
   }
 
   &__list-item {
-    @include momentum-border;
     display: flex;
     align-items: center;
-    background-color: rgba(map-get($colors, "primary"), 0.05);
     margin-bottom: map-get($spacings, "small");
-    padding: map-get($spacings, "tiny");
   }
 
   &__list-item__icon {
-    padding: map-get($spacings, "tiny");
+    padding: map-get($spacings, "tiny") map-get($spacings, "tiny")
+      map-get($spacings, "tiny") 0;
     flex-shrink: 0;
   }
 
   &__notification {
-    font-size: map-get($font_sizes, "medium");
+    font-size: map-get($font_sizes, "small");
     margin-bottom: map-get($spacings, "small");
-    color: map-get($colors, "secondary");
+    color: map-get($colors, "success");
+
+    .Streak--inactive & {
+      color: map-get($colors, "primary");
+    }
   }
 
   &__body {
@@ -93,6 +90,6 @@
   }
 
   &--inactive {
-    opacity: 0.55;
+    opacity: 0.75;
   }
 }

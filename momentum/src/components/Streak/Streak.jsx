@@ -1,12 +1,18 @@
-import {React} from "react";
+import {React, useState} from "react";
 import Countdown from "react-countdown";
 import add from "date-fns/add";
 import {FaTrash, FaShareAlt, FaRegClock, FaTrophy} from "react-icons/fa";
+
+import {Notification} from "../Notification/Notification";
+import {getRandomArrayItem} from "../../utils/utils";
+import messages from "../../data/messages.json";
 
 // style:
 import "./Streak.scss";
 
 export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
+  const [message, setMessage] = useState("");
+
   const getDeadline = () =>
     add(new Date(), {
       [streak.intervalUnit]: streak.intervalNum,
@@ -20,12 +26,14 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
     streak.count = streak.count + 1;
     streak.deadline = getDeadline();
     onStreakUpdate((streak.isActive = true));
+    setMessage(getRandomArrayItem(messages.increment));
   };
 
   const handleStreakLoss = () => {
     streak.count = 0;
     streak.deadline = 0;
     onStreakUpdate((streak.isActive = false));
+    setMessage(getRandomArrayItem(messages.loss));
   };
 
   let goalStatus;
@@ -60,6 +68,10 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
           <h3 className={"Streak__title"}>{streak.title}</h3>
           <h4 className={"Streak__motivation"}>{streak.motivation}</h4>
 
+          <div className="Streak__notification">
+            <Notification text={message} />
+          </div>
+
           <ul className={"Streak__list"}>
             <li className={"Streak__list-item"}>
               <FaRegClock className="Streak__list-item__icon" />
@@ -68,6 +80,7 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
                 maintain this Streak.
               </span>
             </li>
+
             {streak.goal ? (
               <li className={"Streak__list-item"}>
                 <FaTrophy className="Streak__list-item__icon" />
@@ -91,7 +104,7 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
 
           <button
             onClick={handleStreakIncrement}
-            className={`btn btn--small btn--light btn--${
+            className={`btn btn--medium btn--light btn--${
               streak.isActive ? "success" : "primary"
             }`}
           >
