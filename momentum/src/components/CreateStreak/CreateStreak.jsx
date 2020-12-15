@@ -21,7 +21,7 @@ const CreateStreak = ({onCreateStreak}) => {
       intervalNum,
       intervalUnit,
       count: 0,
-      goal,
+      goal: parseInt(goal, 10),
       deadline: 0,
     };
     onCreateStreak(newStreak);

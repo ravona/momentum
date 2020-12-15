@@ -24,7 +24,7 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
 
   const handleStreakLoss = () => {
     streak.count = 0;
-    streak.deadline = null;
+    streak.deadline = 0;
     onStreakUpdate((streak.isActive = false));
   };
 
@@ -43,7 +43,9 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
 
   return (
     <>
-      <div className={`Streak Streak--${streak.isActive ? "active" : null}`}>
+      <div
+        className={`Streak Streak--${streak.isActive ? "active" : "inactive"}`}
+      >
         <div className={"Streak__header"}>
           <div className={"Streak__icon Streak__icon--share"}>
             <FaShareAlt />
@@ -89,7 +91,9 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
 
           <button
             onClick={handleStreakIncrement}
-            className="btn btn--small btn--success btn--light"
+            className={`btn btn--small btn--light btn--${
+              streak.isActive ? "success" : "primary"
+            }`}
           >
             Increment
           </button>

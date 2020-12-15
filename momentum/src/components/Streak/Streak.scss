@@ -40,6 +40,10 @@
     font-size: map-get($font_sizes, "medium");
     margin-bottom: map-get($spacings, "small");
     color: map-get($colors, "success");
+
+    .Streak--inactive & {
+      color: map-get($colors, "primary");
+    }
   }
 
   &__list {
@@ -78,9 +82,17 @@
   &__counter {
     font-size: map-get($font_sizes, "huge");
     color: map-get($colors, "success");
+
+    .Streak--inactive & {
+      color: map-get($colors, "primary");
+    }
   }
 
   &__footer {
     text-align: center;
+  }
+
+  &--inactive {
+    opacity: 0.55;
   }
 }
