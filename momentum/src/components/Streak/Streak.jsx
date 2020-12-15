@@ -1,7 +1,14 @@
 import {React, useState} from "react";
 import Countdown from "react-countdown";
 import add from "date-fns/add";
-import {FaTrash, FaComment, FaTwitter, FaClock, FaTrophy} from "react-icons/fa";
+import {
+  FaTrash,
+  FaHourglassHalf,
+  FaComment,
+  FaTwitter,
+  FaClock,
+  FaTrophy,
+} from "react-icons/fa";
 
 import {Notification} from "../Notification/Notification";
 import {getRandomArrayItem} from "../../utils/utils";
@@ -38,7 +45,9 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
 
   let goalStatus;
   if (streak.goal > streak.count) {
-    goalStatus = `${streak.goal - streak.count} repetitions to reach goal!`;
+    goalStatus = `${
+      streak.goal - streak.count
+    } repetitions left to reach goal!`;
   }
 
   if (streak.count > streak.goal) {
@@ -92,10 +101,24 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
             <li className={"Streak__list-item"}>
               <FaClock className="Streak__list-item__icon" />
               <span>
-                Increment every {streak.intervalNum} {streak.intervalUnit} to
-                maintain this Streak.
+                Increment every{" "}
+                {streak.intervalNum === 1 ? null : streak.intervalNum}{" "}
+                {streak.intervalNum === 1
+                  ? streak.intervalUnit.slice(0, -1)
+                  : streak.intervalUnit}{" "}
+                to maintain this Streak.
               </span>
             </li>
+
+            {streak.isActive ? (
+              <li className={"Streak__list-item"}>
+                <FaHourglassHalf className="Streak__list-item__icon" />
+                <Countdown
+                  date={streak.deadline}
+                  onComplete={handleStreakLoss}
+                ></Countdown>
+              </li>
+            ) : null}
 
             {streak.goal ? (
               <li className={"Streak__list-item"}>
@@ -104,15 +127,6 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
               </li>
             ) : null}
           </ul>
-
-          {streak.isActive ? (
-            <div className="Streak__countdown">
-              <Countdown
-                date={streak.deadline}
-                onComplete={handleStreakLoss}
-              ></Countdown>
-            </div>
-          ) : null}
         </div>
 
         <div className="Streak__footer">

@@ -3,7 +3,6 @@
 
 .Streak {
   @include momentum-border;
-  @include momentum-bevel;
   padding: map-get($spacings, "small") map-get($spacings, "medium");
   display: flex;
   flex-direction: column;
@@ -59,6 +58,10 @@
     &:first-child {
       border-top: 1px dashed map-get($colors, "grandma");
     }
+
+    &:last-child {
+      border-bottom: 0;
+    }
   }
 
   &__list-item__icon {
@@ -82,8 +85,6 @@
 
   &__countdown {
     font-size: map-get($font_sizes, "medium");
-    color: map-get($colors, "grandma");
-    letter-spacing: 0.35rem;
     text-align: center;
   }
 
