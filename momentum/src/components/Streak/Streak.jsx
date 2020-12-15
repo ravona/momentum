@@ -62,8 +62,8 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
             <li className={"Streak__list-item"}>
               <FaRegClock className="Streak__list-item__icon" />
               <span>
-                Update every {streak.intervalNum} {streak.intervalUnit} to
-                prevent reset.
+                Increment every {streak.intervalNum} {streak.intervalUnit} to
+                maintain this Streak.
               </span>
             </li>
             {streak.goal ? (

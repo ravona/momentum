@@ -9,7 +9,7 @@ const CreateStreak = ({onCreateStreak}) => {
   const [motivation, setMotivation] = useState("");
   const [intervalNum, setIntervalNum] = useState(1);
   const [intervalUnit, setIntervalUnit] = useState("days");
-  const [goal, setGoal] = useState(null);
+  const [goal, setGoal] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const CreateStreak = ({onCreateStreak}) => {
       intervalUnit,
       count: 0,
       goal,
-      deadline: null,
+      deadline: 0,
     };
     onCreateStreak(newStreak);
   };
