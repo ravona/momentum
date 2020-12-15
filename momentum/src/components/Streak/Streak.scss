@@ -3,7 +3,6 @@
 
 .Streak {
   @include momentum-border;
-  @include momentum-bevel;
   padding: map-get($spacings, "small") map-get($spacings, "medium");
   display: flex;
   flex-direction: column;
@@ -26,7 +25,7 @@
 
     &--share {
       &:hover {
-        color: map-get($colors, "action");
+        color: map-get($colors, "secondary");
       }
     }
   }
@@ -34,6 +33,11 @@
   &__title {
     font-size: map-get($font_sizes, "large");
     margin-bottom: map-get($spacings, "tiny");
+    color: map-get($colors, "success");
+
+    .Streak--inactive & {
+      color: map-get($colors, "primary");
+    }
   }
 
   &__motivation {
@@ -72,6 +76,7 @@
   }
 
   &__countdown {
+    letter-spacing: 0.1rem;
     font-size: map-get($font_sizes, "medium");
     text-align: center;
   }
@@ -90,6 +95,11 @@
   }
 
   &--inactive {
-    opacity: 0.75;
+    opacity: 0.618;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &--inactive:hover {
+    opacity: 1;
   }
 }

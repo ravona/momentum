@@ -1,7 +1,7 @@
 import {React, useState} from "react";
 import Countdown from "react-countdown";
 import add from "date-fns/add";
-import {FaTrash, FaShareAlt, FaRegClock, FaTrophy} from "react-icons/fa";
+import {FaTrash, FaTwitter, FaRegClock, FaTrophy} from "react-icons/fa";
 
 import {Notification} from "../Notification/Notification";
 import {getRandomArrayItem} from "../../utils/utils";
@@ -49,6 +49,13 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
     goalStatus = "Congratulations, you have reached your goal!";
   }
 
+  let StreakTweet = "";
+  if (streak.isActive) {
+    StreakTweet = `${streak.title} with Momentum - a habit forming app. I'm on a streak of ${streak.count} ${streak.intervalUnit} and going!`;
+  } else {
+    StreakTweet = `${streak.title} with Momentum - a habit forming App. Give it a try, it's awesome!`;
+  }
+
   return (
     <>
       <div
@@ -56,7 +63,13 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
       >
         <div className={"Streak__header"}>
           <div className={"Streak__icon Streak__icon--share"}>
-            <FaShareAlt />
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href={`https://twitter.com/intent/tweet?text=${StreakTweet}`}
+            >
+              <FaTwitter />
+            </a>
           </div>
 
           <div className={"Streak__icon Streak__icon--delete"}>
@@ -68,9 +81,11 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
           <h3 className={"Streak__title"}>{streak.title}</h3>
           <h4 className={"Streak__motivation"}>{streak.motivation}</h4>
 
-          <div className="Streak__notification">
-            <Notification text={message} />
-          </div>
+          {message ? (
+            <div className="Streak__notification">
+              <Notification text={message} />
+            </div>
+          ) : null}
 
           <ul className={"Streak__list"}>
             <li className={"Streak__list-item"}>
