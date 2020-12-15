@@ -1,7 +1,7 @@
 import {React, useState} from "react";
 import Countdown from "react-countdown";
 import add from "date-fns/add";
-import {FaTrash, FaTwitter, FaRegClock, FaTrophy} from "react-icons/fa";
+import {FaTrash, FaComment, FaTwitter, FaClock, FaTrophy} from "react-icons/fa";
 
 import {Notification} from "../Notification/Notification";
 import {getRandomArrayItem} from "../../utils/utils";
@@ -81,15 +81,16 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
           <h3 className={"Streak__title"}>{streak.title}</h3>
           <h4 className={"Streak__motivation"}>{streak.motivation}</h4>
 
-          {message ? (
-            <div className="Streak__notification">
-              <Notification text={message} />
-            </div>
-          ) : null}
-
           <ul className={"Streak__list"}>
+            {message ? (
+              <li className={"Streak__list-item"}>
+                <FaComment className="Streak__list-item__icon" />
+                <Notification text={message} />
+              </li>
+            ) : null}
+
             <li className={"Streak__list-item"}>
-              <FaRegClock className="Streak__list-item__icon" />
+              <FaClock className="Streak__list-item__icon" />
               <span>
                 Increment every {streak.intervalNum} {streak.intervalUnit} to
                 maintain this Streak.
@@ -103,9 +104,7 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
               </li>
             ) : null}
           </ul>
-        </div>
 
-        <div className="Streak__footer">
           {streak.isActive ? (
             <div className="Streak__countdown">
               <Countdown
@@ -114,9 +113,10 @@ export const Streak = ({streak, onDeleteStreak, onStreakUpdate}) => {
               ></Countdown>
             </div>
           ) : null}
+        </div>
 
+        <div className="Streak__footer">
           <div className="Streak__counter">{streak.count}</div>
-
           <button
             onClick={handleStreakIncrement}
             className={`btn btn--medium btn--light btn--${

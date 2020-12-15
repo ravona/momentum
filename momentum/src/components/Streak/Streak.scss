@@ -3,6 +3,7 @@
 
 .Streak {
   @include momentum-border;
+  @include momentum-bevel;
   padding: map-get($spacings, "small") map-get($spacings, "medium");
   display: flex;
   flex-direction: column;
@@ -52,13 +53,17 @@
   &__list-item {
     display: flex;
     align-items: center;
-    margin-bottom: map-get($spacings, "small");
+    padding: map-get($spacings, "tiny") 0;
+    border-bottom: 1px dashed map-get($colors, "grandma");
+
+    &:first-child {
+      border-top: 1px dashed map-get($colors, "grandma");
+    }
   }
 
   &__list-item__icon {
-    padding: map-get($spacings, "tiny") map-get($spacings, "tiny")
-      map-get($spacings, "tiny") 0;
     flex-shrink: 0;
+    padding: map-get($spacings, "tiny");
   }
 
   &__notification {
@@ -76,14 +81,16 @@
   }
 
   &__countdown {
-    letter-spacing: 0.1rem;
     font-size: map-get($font_sizes, "medium");
+    color: map-get($colors, "grandma");
+    letter-spacing: 0.35rem;
     text-align: center;
   }
 
   &__counter {
     font-size: map-get($font_sizes, "huge");
     color: map-get($colors, "success");
+    text-align: center;
 
     .Streak--inactive & {
       color: map-get($colors, "primary");
