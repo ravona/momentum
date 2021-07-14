@@ -1,21 +1,21 @@
 {
-  "loss": [
-    "Never give up!",
-    "There is no failure - only feedback",
-    "It's never too late to be better. Think what can you do differently next time, so you won't lose the Streak and try again.",
-    "Great things never come from comfort zones.",
-    "The harder you work for something, the greater you’ll feel when you achieve it.",
-    "“Don’t Let Yesterday Take Up Too Much Of Today.” – Will Rogers",
-    "“It’s Not Whether You Get Knocked Down, It’s Whether You Get Up.” – Vince Lombardi",
-    "“If You Are Working On Something That You Really Care About, You Don’t Have To Be Pushed. The Vision Pulls You.” – Steve Jobs"
-  ],
-  "increment": [
-    "Keep up the good work!",
-    "You should be proud of yourself!",
-    "You're doing great!",
-    "Who can stop you now?!",
-    "Good job!",
-    "Another one!",
-    "Little things make big days."
-  ]
+    "loss": [
+        "Never give up!",
+        "There is no failure - only feedback",
+        "It's never too late to be better. Think what can you do differently next time, so you won't lose the Streak and try again.",
+        "Great things never come from comfort zones.",
+        "The harder you work for something, the greater you’ll feel when you achieve it.",
+        "“Don’t Let Yesterday Take Up Too Much Of Today.” – Will Rogers",
+        "“It’s Not Whether You Get Knocked Down, It’s Whether You Get Up.” – Vince Lombardi",
+        "“If You Are Working On Something That You Really Care About, You Don’t Have To Be Pushed. The Vision Pulls You.” – Steve Jobs"
+    ],
+    "increment": [
+        "Keep up the good work!",
+        "You should be proud of yourself!",
+        "You're doing great!",
+        "Who can stop you now?!",
+        "Good job!",
+        "Another one!",
+        "Little things make big days."
+    ]
 }

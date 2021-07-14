@@ -1,5 +1,6 @@
-@import "../../style/global";
+@import '../../style/global';
 
 .container {
-  padding: map-get($spacings, "tiny") map-get($spacings, "small");
+    width: clamp(80vw, 94vw, 98vw);
+    margin: 0 auto;
 }

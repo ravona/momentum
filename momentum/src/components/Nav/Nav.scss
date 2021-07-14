@@ -1,26 +1,26 @@
-@import "../../style/global";
+@import '../../style/global';
 
 .Navigation {
-  margin-bottom: map-get($spacings, "small");
+    margin-bottom: map-get($spacings, 'small');
 
-  &__items {
-    font-size: map-get($font_sizes, "large");
-    text-align: center;
+    &__items {
+        font-size: map-get($font_sizes, 'large');
+        text-align: center;
 
-    @media only screen and (min-width: 720px) {
-      display: flex;
-    }
-  }
-
-  &__item {
-    color: map-get($colors, "primary");
-
-    &:hover {
-      color: map-get($colors, "success");
+        @media only screen and (min-width: 720px) {
+            display: flex;
+        }
     }
 
-    @media only screen and (min-width: 720px) {
-      margin-right: map-get($spacings, "small");
+    &__item {
+        color: map-get($colors, 'primary');
+
+        &:hover {
+            color: map-get($colors, 'success');
+        }
+
+        @media only screen and (min-width: 720px) {
+            margin-right: map-get($spacings, 'small');
+        }
     }
-  }
 }

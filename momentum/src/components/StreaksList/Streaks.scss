@@ -1,16 +1,16 @@
-@import "../../style/global";
+@import '../../style/global';
 
 .Streaks {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  justify-content: stretch;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-content: stretch;
 
-  @media only screen and (min-width: $tablet-width) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+    @media only screen and (min-width: map-get($screen_sizes, 'tablet')) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 
-  @media only screen and (min-width: $desktop-width) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+    @media only screen and (min-width: map-get($screen_sizes, 'desktop')) {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
 }

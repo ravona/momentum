@@ -4,7 +4,7 @@
 .CreateStreak {
   padding: map-get($spacings, "medium");
 
-  @media only screen and (min-width: $tablet-width) {
+  @media only screen and (min-width: map-get($screen_sizes, "tablet")) {
     width: 25rem;
     margin: 0 auto;
   }

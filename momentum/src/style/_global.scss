@@ -1,30 +1,32 @@
-@import "./colors";
+@import './colors';
 
 $border-radius: 0.5rem;
 
-$tablet-width: 767px;
-$desktop-width: 1024px;
+$screen_sizes: (
+    tablet: '767px',
+    desktop: '1024px',
+);
 
 $spacings: (
-  tiny: 0.618rem,
-  small: 1rem,
-  medium: 1.618rem,
-  large: 2rem,
-  huge: 2.618rem,
+    tiny: 0.618rem,
+    small: 1rem,
+    medium: 1.618rem,
+    large: 2rem,
+    huge: 2.618rem,
 );
 
 $font_sizes: (
-  tiny: 0.618rem,
-  small: 1rem,
-  medium: 1.618rem,
-  large: 2rem,
-  huge: 3.236rem,
+    tiny: 0.618rem,
+    small: 1rem,
+    medium: 1.618rem,
+    large: 2rem,
+    huge: 3.236rem,
 );
 
 @mixin momentum-border {
-  border: 1px solid map-get($colors, "grandma");
-  border-radius: $border-radius;
+    border: 1px solid map-get($colors, 'grandma');
+    border-radius: $border-radius;
 }
 @mixin momentum-bevel {
-  box-shadow: 0 4px 0 0px darken(rgba(0, 0, 200, 0.5), 20%);
+    box-shadow: 0 4px 0 0px darken(rgba(0, 0, 200, 0.5), 20%);
 }

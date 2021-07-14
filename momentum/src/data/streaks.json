@@ -1,35 +1,35 @@
 [
-  {
-    "id": "AzzgB3F6aa",
-    "title": "I quit smoking",
-    "motivation": "So I can play basketball with my kids",
-    "intervalNum": 1,
-    "intervalUnit": "days",
-    "isActive": false,
-    "count": 0,
-    "goal": 10,
-    "deadline": null
-  },
-  {
-    "id": "BzzgB3F6ab",
-    "title": "I practice playing the guitar for 2 hours every day",
-    "motivation": "So I can join a band",
-    "intervalNum": 1,
-    "intervalUnit": "days",
-    "isActive": false,
-    "count": 0,
-    "goal": 30,
-    "deadline": null
-  },
-  {
-    "id": "CzzgB3F6ac",
-    "title": "I learn 10 words in Spanish every day",
-    "motivation": "I want to speak with the locals during my upcoming trip to Mexico",
-    "intervalNum": 2,
-    "intervalUnit": "seconds",
-    "isActive": false,
-    "count": 0,
-    "goal": 3,
-    "deadline": null
-  }
+    {
+        "id": "AzzgB3F6aa",
+        "title": "I quit smoking",
+        "motivation": "So I can play basketball with my kids",
+        "intervalNum": 1,
+        "intervalUnit": "days",
+        "isActive": false,
+        "count": 0,
+        "goal": 10,
+        "deadline": null
+    },
+    {
+        "id": "BzzgB3F6ab",
+        "title": "I practice playing the guitar for 2 hours every day",
+        "motivation": "So I can join a band",
+        "intervalNum": 1,
+        "intervalUnit": "days",
+        "isActive": false,
+        "count": 0,
+        "goal": 30,
+        "deadline": null
+    },
+    {
+        "id": "CzzgB3F6ac",
+        "title": "I learn 10 words in Spanish every day",
+        "motivation": "I want to speak with the locals during my upcoming trip to Mexico",
+        "intervalNum": 2,
+        "intervalUnit": "seconds",
+        "isActive": false,
+        "count": 0,
+        "goal": 3,
+        "deadline": null
+    }
 ]
