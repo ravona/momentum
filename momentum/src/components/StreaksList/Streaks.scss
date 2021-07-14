@@ -1,4 +1,4 @@
-@import '../../style/global';
+@import "../../style/global";
 
 .Streaks {
     display: grid;
@@ -6,11 +6,11 @@
     gap: 1rem;
     justify-content: stretch;
 
-    @media only screen and (min-width: map-get($screen_sizes, 'tablet')) {
+    @media only screen and (min-width: map-get($screen_sizes, "tablet")) {
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    @media only screen and (min-width: map-get($screen_sizes, 'desktop')) {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    @media only screen and (min-width: map-get($screen_sizes, "desktop")) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }

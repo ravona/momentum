@@ -3,8 +3,10 @@
 @import "./style/colors";
 @import "./style/fonts";
 @import "./style/buttons";
+@import "./style/forms";
 
 .App {
-  font-family: "Fredoka One", cursive;
-  padding: 1rem;
+    font-family: "Fredoka One", cursive;
+    padding: 1rem;
+    height: 100%;
 }

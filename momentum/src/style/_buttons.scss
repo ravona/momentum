@@ -1,4 +1,5 @@
-@import './colors';
+@import "./colors";
+@import "./global";
 
 .btn {
     font-size: inherit;
@@ -7,6 +8,7 @@
     text-align: center;
     white-space: nowrap;
     user-select: none;
+    margin: map-get($spacings, "tiny") 0;
 
     &:disabled {
         opacity: 0.2;
@@ -33,7 +35,7 @@
 }
 
 // button sizes:
-$btn-sizes: 'tiny', 'small', 'medium', 'large', 'huge';
+$btn-sizes: "tiny", "small", "medium", "large", "huge";
 
 @each $item in $btn-sizes {
     $itemIndex: index($btn-sizes, $item);

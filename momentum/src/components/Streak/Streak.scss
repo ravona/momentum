@@ -1,62 +1,62 @@
-@import '../../style/global';
-@import '../../style/colors';
+@import "../../style/global";
+@import "../../style/colors";
 
 .Streak {
     @include momentum-border;
-    padding: map-get($spacings, 'small') map-get($spacings, 'medium');
+    padding: map-get($spacings, "small") map-get($spacings, "medium");
     display: flex;
     flex-direction: column;
 
     &__header {
         display: flex;
         justify-content: flex-end;
-        margin-bottom: map-get($spacings, 'tiny');
+        margin-bottom: map-get($spacings, "tiny");
     }
 
     &__icon {
         cursor: pointer;
-        padding: map-get($spacings, 'tiny');
+        padding: map-get($spacings, "tiny");
 
         &--delete {
             &:hover {
-                color: map-get($colors, 'danger');
+                color: map-get($colors, "danger");
             }
         }
 
         &--share {
             &:hover {
-                color: map-get($colors, 'secondary');
+                color: map-get($colors, "secondary");
             }
         }
     }
 
     &__title {
-        font-size: map-get($font_sizes, 'large');
-        margin-bottom: map-get($spacings, 'tiny');
-        color: map-get($colors, 'success');
+        font-size: map-get($font_sizes, "large");
+        margin-bottom: map-get($spacings, "tiny");
+        color: map-get($colors, "success");
 
         .Streak--inactive & {
-            color: map-get($colors, 'primary');
+            color: map-get($colors, "primary");
         }
     }
 
     &__motivation {
-        font-size: map-get($font_sizes, 'medium');
-        margin-bottom: map-get($spacings, 'small');
+        font-size: map-get($font_sizes, "medium");
+        margin-bottom: map-get($spacings, "small");
     }
 
     &__list {
-        margin-bottom: map-get($spacings, 'small');
+        margin-bottom: map-get($spacings, "small");
     }
 
     &__list-item {
         display: flex;
         align-items: center;
-        padding: map-get($spacings, 'tiny') 0;
-        border-bottom: 1px dashed map-get($colors, 'grandma');
+        padding: map-get($spacings, "tiny") 0;
+        border-bottom: 1px dashed map-get($colors, "grandma");
 
         &:first-child {
-            border-top: 1px dashed map-get($colors, 'grandma');
+            border-top: 1px dashed map-get($colors, "grandma");
         }
 
         &:last-child {
@@ -66,16 +66,16 @@
 
     &__list-item__icon {
         flex-shrink: 0;
-        padding: map-get($spacings, 'tiny');
+        margin: map-get($spacings, "tiny");
     }
 
     &__notification {
-        font-size: map-get($font_sizes, 'small');
-        margin-bottom: map-get($spacings, 'small');
-        color: map-get($colors, 'success');
+        font-size: map-get($font_sizes, "small");
+        margin-bottom: map-get($spacings, "small");
+        color: map-get($colors, "success");
 
         .Streak--inactive & {
-            color: map-get($colors, 'primary');
+            color: map-get($colors, "primary");
         }
     }
 
@@ -84,17 +84,17 @@
     }
 
     &__countdown {
-        font-size: map-get($font_sizes, 'medium');
+        font-size: map-get($font_sizes, "medium");
         text-align: center;
     }
 
     &__counter {
-        font-size: map-get($font_sizes, 'huge');
-        color: map-get($colors, 'success');
+        font-size: map-get($font_sizes, "huge");
+        color: map-get($colors, "success");
         text-align: center;
 
         .Streak--inactive & {
-            color: map-get($colors, 'primary');
+            color: map-get($colors, "primary");
         }
     }
 

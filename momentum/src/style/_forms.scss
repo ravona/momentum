@@ -1,25 +1,25 @@
-@import './global';
-@import './colors';
+@import "./global";
+@import "./colors";
 
 .form {
     @include momentum-border;
-    margin: map-get($spacings, 'medium') 0;
-    padding: map-get($spacings, 'medium');
+    margin: map-get($spacings, "medium") 0;
+    padding: map-get($spacings, "medium");
 
     &__title {
-        color: map-get($colors, 'primary');
+        color: map-get($colors, "primary");
         text-align: center;
     }
 
     &__section {
         display: flex;
         flex-direction: column;
-        margin: map-get($spacings, 'small') 0;
+        margin: map-get($spacings, "small") 0;
     }
 
     &__label {
-        font-size: map-get($font_sizes, 'small');
-        margin-bottom: map-get($spacings, 'tiny');
+        font-size: map-get($font_sizes, "small");
+        margin-bottom: map-get($spacings, "tiny");
     }
 
     &__input,
@@ -27,7 +27,7 @@
         @include momentum-border;
         display: block;
         padding: 0.375rem 0.75rem;
-        font-size: map-get($font_sizes, 'small');
+        font-size: map-get($font_sizes, "small");
         line-height: 1.5;
         background-color: #fff;
         background-clip: padding-box;

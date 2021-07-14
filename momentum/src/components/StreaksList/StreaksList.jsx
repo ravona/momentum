@@ -1,26 +1,21 @@
-import React from 'react'
+// context:
+import { useStreaks } from "../../context/StreakProvider"
 
 // components:
-import { Streak } from '../Streak/Streak'
+import { Streak } from "../Streak/Streak"
 
 // style:
-import './Streaks.scss'
+import "./Streaks.scss"
 
-const StreaksList = ({ streaks, onDeleteStreak, onStreakUpdate }) => {
+const StreaksList = () => {
+    const { streaks } = useStreaks()
+
     return (
-        <>
-            <div className="Streaks">
-                {streaks.map((streak) => (
-                    <Streak
-                        key={streak.id}
-                        streaks={streaks}
-                        streak={streak}
-                        onDeleteStreak={onDeleteStreak}
-                        onStreakUpdate={onStreakUpdate}
-                    />
-                ))}
-            </div>
-        </>
+        <div className="Streaks">
+            {streaks.map((streak) => (
+                <Streak key={streak.id} streak={streak} />
+            ))}
+        </div>
     )
 }
 
